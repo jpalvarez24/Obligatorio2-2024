@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/Application.java to edit this template
  */
 package interfaz;
 
@@ -26,23 +26,160 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        menuBar = new javax.swing.JMenuBar();
+        fileMenu = new javax.swing.JMenu();
+        btnRegistrarRubro = new javax.swing.JMenuItem();
+        btnRegistrarCapataz = new javax.swing.JMenuItem();
+        btnRegistrarPropietario = new javax.swing.JMenuItem();
+        btnRegistroObra = new javax.swing.JMenuItem();
+        btnRegistroGastoObra = new javax.swing.JMenu();
+        btnRegistroGasto = new javax.swing.JMenuItem();
+        btnPagoGasto = new javax.swing.JMenuItem();
+        btnEstadoObra = new javax.swing.JMenuItem();
+        helpMenu = new javax.swing.JMenu();
+        btnImportacionDatos = new javax.swing.JMenuItem();
+        btnExportacionDatos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        fileMenu.setMnemonic('f');
+        fileMenu.setText("Registros");
+
+        btnRegistrarRubro.setMnemonic('o');
+        btnRegistrarRubro.setText("Registrar / Modificar rubro");
+        btnRegistrarRubro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarRubroActionPerformed(evt);
+            }
+        });
+        fileMenu.add(btnRegistrarRubro);
+
+        btnRegistrarCapataz.setMnemonic('s');
+        btnRegistrarCapataz.setText("Registrar capataz");
+        btnRegistrarCapataz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarCapatazActionPerformed(evt);
+            }
+        });
+        fileMenu.add(btnRegistrarCapataz);
+
+        btnRegistrarPropietario.setMnemonic('a');
+        btnRegistrarPropietario.setText("Registro de propietario");
+        btnRegistrarPropietario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarPropietarioActionPerformed(evt);
+            }
+        });
+        fileMenu.add(btnRegistrarPropietario);
+
+        btnRegistroObra.setMnemonic('x');
+        btnRegistroObra.setText("Registro de obra");
+        btnRegistroObra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistroObraActionPerformed(evt);
+            }
+        });
+        fileMenu.add(btnRegistroObra);
+
+        menuBar.add(fileMenu);
+
+        btnRegistroGastoObra.setMnemonic('e');
+        btnRegistroGastoObra.setText("Gastos");
+
+        btnRegistroGasto.setMnemonic('t');
+        btnRegistroGasto.setText("Registro de gasto para obra");
+        btnRegistroGasto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistroGastoActionPerformed(evt);
+            }
+        });
+        btnRegistroGastoObra.add(btnRegistroGasto);
+
+        btnPagoGasto.setMnemonic('y');
+        btnPagoGasto.setText("Pago de gasto");
+        btnPagoGasto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPagoGastoActionPerformed(evt);
+            }
+        });
+        btnRegistroGastoObra.add(btnPagoGasto);
+
+        btnEstadoObra.setMnemonic('p');
+        btnEstadoObra.setText("Estado de obra");
+        btnEstadoObra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEstadoObraActionPerformed(evt);
+            }
+        });
+        btnRegistroGastoObra.add(btnEstadoObra);
+
+        menuBar.add(btnRegistroGastoObra);
+
+        helpMenu.setMnemonic('h');
+        helpMenu.setText("Importacion y Exportacion");
+
+        btnImportacionDatos.setMnemonic('c');
+        btnImportacionDatos.setText("Importacion de datos para obra nueva");
+        helpMenu.add(btnImportacionDatos);
+
+        btnExportacionDatos.setMnemonic('a');
+        btnExportacionDatos.setText("Exportacion de datos de Propietarios y Capataces");
+        btnExportacionDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportacionDatosActionPerformed(evt);
+            }
+        });
+        helpMenu.add(btnExportacionDatos);
+
+        menuBar.add(helpMenu);
+
+        setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 984, Short.MAX_VALUE)
+            .addGap(0, 657, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+            .addGap(0, 364, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRegistroObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroObraActionPerformed
+        new RegistroObra().setVisible(true);
+    }//GEN-LAST:event_btnRegistroObraActionPerformed
+
+    private void btnExportacionDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportacionDatosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExportacionDatosActionPerformed
+
+    private void btnRegistrarCapatazActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarCapatazActionPerformed
+        new AltaCapataz().setVisible(true);
+    }//GEN-LAST:event_btnRegistrarCapatazActionPerformed
+
+    private void btnRegistrarRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarRubroActionPerformed
+        new AltaRubro().setVisible(true);
+    }//GEN-LAST:event_btnRegistrarRubroActionPerformed
+
+    private void btnRegistrarPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarPropietarioActionPerformed
+        new AltaPropietario().setVisible(true);
+    }//GEN-LAST:event_btnRegistrarPropietarioActionPerformed
+
+    private void btnRegistroGastoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroGastoActionPerformed
+        new RegistroGastoObra().setVisible(true);
+    }//GEN-LAST:event_btnRegistroGastoActionPerformed
+
+    private void btnPagoGastoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagoGastoActionPerformed
+        new PagoGastos().setVisible(true);
+    }//GEN-LAST:event_btnPagoGastoActionPerformed
+
+    private void btnEstadoObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstadoObraActionPerformed
+        new EstadoObra().setVisible(true);
+    }//GEN-LAST:event_btnEstadoObraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -80,6 +217,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JMenuItem btnEstadoObra;
+    private javax.swing.JMenuItem btnExportacionDatos;
+    private javax.swing.JMenuItem btnImportacionDatos;
+    private javax.swing.JMenuItem btnPagoGasto;
+    private javax.swing.JMenuItem btnRegistrarCapataz;
+    private javax.swing.JMenuItem btnRegistrarPropietario;
+    private javax.swing.JMenuItem btnRegistrarRubro;
+    private javax.swing.JMenuItem btnRegistroGasto;
+    private javax.swing.JMenu btnRegistroGastoObra;
+    private javax.swing.JMenuItem btnRegistroObra;
+    private javax.swing.JMenu fileMenu;
+    private javax.swing.JMenu helpMenu;
+    private javax.swing.JMenuBar menuBar;
     // End of variables declaration//GEN-END:variables
+
 }

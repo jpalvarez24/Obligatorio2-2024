@@ -4,6 +4,8 @@
  */
 package obligatorio2.pkg2024;
 
+import interfaz.MenuPrincipal;
+
 /**
  *
  * @author Juan Pedro Alvarez-281369
@@ -14,7 +16,7 @@ public class Obligatorio22024 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        new MenuPrincipal().setVisible(true);
     }
     
 }
