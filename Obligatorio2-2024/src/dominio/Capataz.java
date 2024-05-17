@@ -9,5 +9,10 @@ package dominio;
  * @author Juan Pedro Alvarez-281369
  */
 public class Capataz {
+    private String nombre;
+    private String cedula;
+    private String direccion;
+    private int anoIngreso;
+    
     
 }

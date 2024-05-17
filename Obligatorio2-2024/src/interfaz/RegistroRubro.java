@@ -42,7 +42,6 @@ public class RegistroRubro extends javax.swing.JFrame {
         jButton1.setText("Registrar");
 
         jTextFieldNombre.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jTextFieldNombre.setText("Ingrese el nombre del Rubro...");
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel1.setText("Nombre:");
@@ -51,18 +50,12 @@ public class RegistroRubro extends javax.swing.JFrame {
         jLabel2.setText("Descripcion:");
 
         jListaRubros.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jListaRubros.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(jListaRubros);
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel3.setText("Rubros registrados:");
 
         jTextFieldDesc.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jTextFieldDesc.setText("Describa el rubro...");
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setText("Registrar / Modificar rubro");
@@ -83,8 +76,8 @@ public class RegistroRubro extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jTextFieldDesc, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                            .addComponent(jTextFieldNombre))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1)))
                 .addContainerGap())

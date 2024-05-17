@@ -9,5 +9,9 @@ package dominio;
  * @author Juan Pedro Alvarez-281369
  */
 public class Propietario {
+    private String nombre;
+    private String cedula;
+    private String direccion;
+    private int numContacto;
     
 }

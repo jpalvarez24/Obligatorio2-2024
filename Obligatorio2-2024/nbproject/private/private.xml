@@ -3,16 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/alvar/OneDrive/Documents/NetBeansProjects/Obligatorio2-2024/src/interfaz/MenuPrincipal.java</file>
+            <file>file:/C:/Users/alvar/OneDrive/Documents/NetBeansProjects/Obligatorio2-2024/src/dominio/Rubro.java</file>
             <file>file:/C:/Users/alvar/OneDrive/Documents/NetBeansProjects/Obligatorio2-2024/src/interfaz/PagoGastos.java</file>
             <file>file:/C:/Users/alvar/OneDrive/Documents/NetBeansProjects/Obligatorio2-2024/src/interfaz/RegistroObra.java</file>
             <file>file:/C:/Users/alvar/OneDrive/Documents/NetBeansProjects/Obligatorio2-2024/src/interfaz/EstadoObra.java</file>
-            <file>file:/C:/Users/alvar/OneDrive/Documents/NetBeansProjects/Obligatorio2-2024/src/interfaz/RegistroGastoObra.java</file>
-            <file>file:/C:/Users/alvar/OneDrive/Documents/NetBeansProjects/Obligatorio2-2024/src/interfaz/AltaCapataz.java</file>
-            <file>file:/C:/Users/alvar/OneDrive/Documents/NetBeansProjects/Obligatorio2-2024/src/interfaz/AltaPropietario.java</file>
-            <file>file:/C:/Users/alvar/OneDrive/Documents/NetBeansProjects/Obligatorio2-2024/src/interfaz/AltaRubro.java</file>
-            <file>file:/C:/Users/alvar/OneDrive/Documents/NetBeansProjects/Obligatorio2-2024/src/obligatorio2/pkg2024/Obligatorio22024.java</file>
+            <file>file:/C:/Users/alvar/OneDrive/Documents/NetBeansProjects/Obligatorio2-2024/src/interfaz/RegistroRubro.java</file>
+            <file>file:/C:/Users/alvar/OneDrive/Documents/NetBeansProjects/Obligatorio2-2024/src/dominio/Obra.java</file>
             <file>file:/C:/Users/alvar/OneDrive/Documents/NetBeansProjects/Obligatorio2-2024/src/interfaz/MenuArranque.java</file>
+            <file>file:/C:/Users/alvar/OneDrive/Documents/NetBeansProjects/Obligatorio2-2024/src/interfaz/MenuPrincipal.java</file>
+            <file>file:/C:/Users/alvar/OneDrive/Documents/NetBeansProjects/Obligatorio2-2024/src/dominio/Propietario.java</file>
+            <file>file:/C:/Users/alvar/OneDrive/Documents/NetBeansProjects/Obligatorio2-2024/src/dominio/Capataz.java</file>
+            <file>file:/C:/Users/alvar/OneDrive/Documents/NetBeansProjects/Obligatorio2-2024/src/interfaz/RegistroPropietario.java</file>
+            <file>file:/C:/Users/alvar/OneDrive/Documents/NetBeansProjects/Obligatorio2-2024/src/dominio/Sistema.java</file>
+            <file>file:/C:/Users/alvar/OneDrive/Documents/NetBeansProjects/Obligatorio2-2024/src/interfaz/RegistroCapataz.java</file>
+            <file>file:/C:/Users/alvar/OneDrive/Documents/NetBeansProjects/Obligatorio2-2024/src/interfaz/RegistroGastoObra.java</file>
+            <file>file:/C:/Users/alvar/OneDrive/Documents/NetBeansProjects/Obligatorio2-2024/src/obligatorio2/pkg2024/Obligatorio22024.java</file>
         </group>
     </open-files>
 </project-private>

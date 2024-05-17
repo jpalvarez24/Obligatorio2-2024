@@ -9,5 +9,8 @@ package dominio;
  * @author Juan Pedro Alvarez-281369
  */
 public class Rubro {
+    private String nombreRubro;
+    private String descripcion;
+    
     
 }
