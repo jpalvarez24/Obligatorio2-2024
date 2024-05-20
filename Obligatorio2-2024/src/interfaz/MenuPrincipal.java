@@ -4,6 +4,7 @@
  */
 package interfaz;
 
+import dominio.Sistema;
 /**
  *
  * @author Juan Pedro Alvarez-281369
@@ -41,6 +42,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnExportacionDatos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("Registros");
@@ -135,18 +137,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         setJMenuBar(menuBar);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 657, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 364, Short.MAX_VALUE)
-        );
-
-        pack();
+        setBounds(0, 0, 671, 423);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistroObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroObraActionPerformed

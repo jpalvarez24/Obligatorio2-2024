@@ -32,6 +32,7 @@ public class MenuArranque extends javax.swing.JFrame {
         btnSoloRubros = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         jTextField1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jTextField1.setText("Seleccione una opcion:");
@@ -40,6 +41,8 @@ public class MenuArranque extends javax.swing.JFrame {
                 jTextField1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jTextField1);
+        jTextField1.setBounds(68, 29, 184, 30);
 
         btnSisVacio.setText("Sistema Vacio");
         btnSisVacio.addActionListener(new java.awt.event.ActionListener() {
@@ -47,6 +50,8 @@ public class MenuArranque extends javax.swing.JFrame {
                 btnSisVacioActionPerformed(evt);
             }
         });
+        getContentPane().add(btnSisVacio);
+        btnSisVacio.setBounds(10, 77, 97, 21);
 
         btnSisAnterior.setText("Sistema anterior");
         btnSisAnterior.addActionListener(new java.awt.event.ActionListener() {
@@ -54,41 +59,14 @@ public class MenuArranque extends javax.swing.JFrame {
                 btnSisAnteriorActionPerformed(evt);
             }
         });
+        getContentPane().add(btnSisAnterior);
+        btnSisAnterior.setBounds(125, 77, 109, 21);
 
         btnSoloRubros.setText("Solo rubros");
+        getContentPane().add(btnSoloRubros);
+        btnSoloRubros.setBounds(252, 77, 85, 21);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnSisVacio)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnSisAnterior)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnSoloRubros))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSisVacio)
-                    .addComponent(btnSisAnterior)
-                    .addComponent(btnSoloRubros))
-                .addGap(13, 13, 13))
-        );
-
-        pack();
+        setBounds(0, 0, 361, 148);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed

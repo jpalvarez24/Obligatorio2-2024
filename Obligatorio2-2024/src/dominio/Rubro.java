@@ -11,6 +11,28 @@ package dominio;
 public class Rubro {
     private String nombreRubro;
     private String descripcion;
+
+    public Rubro(String nombreRubro, String descripcion) {
+        this.nombreRubro = nombreRubro;
+        this.descripcion = descripcion;
+    }
+
+    
+    public String getNombreRubro() {
+        return nombreRubro;
+    }
+
+    public void setNombreRubro(String nombreRubro) {
+        this.nombreRubro = nombreRubro;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
     
     
 }

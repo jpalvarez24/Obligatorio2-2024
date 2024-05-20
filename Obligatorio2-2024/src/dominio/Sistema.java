@@ -17,7 +17,38 @@ public class Sistema {
     private ArrayList listaPropietarios = new ArrayList();
     private ArrayList listaCapataces = new ArrayList();
     private ArrayList listaObras = new ArrayList();
+
+    public void addRubro(Rubro unRubro){
+        listaRubros.add(unRubro);
+    }
     
+    public void addPropietario(Propietario unPropietario){
+        listaPropietarios.add(unPropietario);
+    }
+    
+    public void addCapataz(Capataz unCapataz){
+        listaCapataces.add(unCapataz);
+    }
+    
+    public void addObra(Obra unaObra){
+        listaObras.add(unaObra);
+    }
+    
+    public ArrayList<Rubro> getListaRubros(){
+        return this.listaRubros;
+    }
+    
+    public ArrayList<Propietario> getListaPropietarios(){
+        return this.listaPropietarios;
+    }
+    
+    public ArrayList getListaCapataces() {
+        return this.listaCapataces;
+    }
+    
+    public ArrayList<Obra> getListaObras() {
+        return this.listaObras;
+    }
     
     
 }
