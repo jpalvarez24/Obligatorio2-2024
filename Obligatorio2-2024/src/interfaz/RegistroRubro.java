@@ -5,14 +5,14 @@ import dominio.*;
 
 public class RegistroRubro extends javax.swing.JFrame {
 
-    private Rubro modelo;
+    private Sistema sis;
    
     public RegistroRubro() {
         initComponents();
     }
     
-    public RegistroRubro(Rubro unRubro){
-        modelo = unRubro;
+    public RegistroRubro(Sistema unSistema){
+        sis = unSistema;
         initComponents();
     }
 
@@ -112,36 +112,6 @@ public class RegistroRubro extends javax.swing.JFrame {
         setBounds(0, 0, 430, 280);
     }// </editor-fold>//GEN-END:initComponents
 
-    public static void main(String args[]) {
-        
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistroRubro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistroRubro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistroRubro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroRubro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new RegistroRubro().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

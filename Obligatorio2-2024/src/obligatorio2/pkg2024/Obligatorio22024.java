@@ -4,7 +4,7 @@
  */
 package obligatorio2.pkg2024;
 
-import interfaz.MenuPrincipal;
+import interfaz.MenuArranque;
 import dominio.Sistema;
 /**
  *
@@ -16,8 +16,8 @@ public class Obligatorio22024 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        new MenuPrincipal().setVisible(true);
+        Sistema sis = new Sistema();
+        new MenuArranque(sis).setVisible(true);
     }
     
 }
