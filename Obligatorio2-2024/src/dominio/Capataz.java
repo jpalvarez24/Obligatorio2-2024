@@ -52,6 +52,11 @@ public class Capataz {
     public void setAnoIngreso(int anoIngreso) {
         this.anoIngreso = anoIngreso;
     }
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
     
     
     

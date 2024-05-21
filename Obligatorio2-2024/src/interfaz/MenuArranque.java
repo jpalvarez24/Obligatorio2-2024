@@ -51,6 +51,11 @@ public class MenuArranque extends javax.swing.JFrame {
         });
 
         btnSoloRubros.setText("Solo rubros");
+        btnSoloRubros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSoloRubrosActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel1.setText("Seleccione una opcion");
@@ -99,6 +104,11 @@ public class MenuArranque extends javax.swing.JFrame {
     private void btnSisVacioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSisVacioActionPerformed
         new MenuPrincipal(sis).setVisible(true);
     }//GEN-LAST:event_btnSisVacioActionPerformed
+
+    private void btnSoloRubrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSoloRubrosActionPerformed
+        new MenuPrincipal(sis).setVisible(true);
+        
+    }//GEN-LAST:event_btnSoloRubrosActionPerformed
 
     /**
      * @param args the command line arguments

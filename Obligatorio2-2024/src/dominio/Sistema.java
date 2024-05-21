@@ -5,12 +5,13 @@
 package dominio;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
 /**
  *
  * @author Juan Pedro Alvarez-281369
  */
-public class Sistema {
+public class Sistema extends Observable{
     
     
     private ArrayList listaRubros = new ArrayList();
@@ -20,8 +21,12 @@ public class Sistema {
 
     public void addRubro(Rubro unRubro){
         listaRubros.add(unRubro);
+        setChanged();
+        notifyObservers();
     }
-    
+    public Rubro[] getVectorRubros() {
+        return (Rubro []) this.listaRubros.toArray();
+    }
     public void addPropietario(Propietario unPropietario){
         listaPropietarios.add(unPropietario);
     }

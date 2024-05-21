@@ -5,7 +5,7 @@
 package interfaz;
 
 import dominio.Sistema;
-
+import dominio.Capataz;
 public class RegistroCapataz extends javax.swing.JFrame {
 
     private Sistema sis;
@@ -24,19 +24,76 @@ public class RegistroCapataz extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtFldNombre = new javax.swing.JTextField();
+        txtFldCedula = new javax.swing.JTextField();
+        txtFldDireccion = new javax.swing.JTextField();
+        txtFldAnoIngreso = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 400, 260);
+
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(40, 20, 33, 13);
+
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(40, 70, 33, 13);
+
+        jLabel3.setText("jLabel3");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(40, 120, 33, 13);
+
+        jLabel4.setText("jLabel4");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(40, 180, 33, 13);
+        getContentPane().add(txtFldNombre);
+        txtFldNombre.setBounds(150, 20, 7, 19);
+        getContentPane().add(txtFldCedula);
+        txtFldCedula.setBounds(140, 60, 7, 19);
+        getContentPane().add(txtFldDireccion);
+        txtFldDireccion.setBounds(140, 110, 7, 19);
+        getContentPane().add(txtFldAnoIngreso);
+        txtFldAnoIngreso.setBounds(130, 180, 7, 19);
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(320, 260, 71, 21);
 
         setBounds(0, 0, 414, 337);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+                                                      
+        String nombre = txtFldNombre.getText();
+        String cedula = txtFldCedula.getText();
+        String direc = txtFldDireccion.getText();
+        int anoIngreso = Integer.valueOf(txtFldAnoIngreso.getText());
+        Capataz c1 = new Capataz(nombre, cedula, direc, anoIngreso);
+        sis.addCapataz(c1); 
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JTextField txtFldAnoIngreso;
+    private javax.swing.JTextField txtFldCedula;
+    private javax.swing.JTextField txtFldDireccion;
+    private javax.swing.JTextField txtFldNombre;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,7 @@
 package interfaz;
 
 import dominio.Sistema;
+import dominio.Propietario;
 public class RegistroPropietario extends javax.swing.JFrame {
 
     private Sistema sis;
@@ -22,31 +23,85 @@ public class RegistroPropietario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtFldNombre = new javax.swing.JTextField();
+        txtFldCedul = new javax.swing.JTextField();
+        txtFldDireccion = new javax.swing.JTextField();
+        txtFldNroCont = new javax.swing.JTextField();
+        botonRegistrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 335, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
-        );
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(30, 20, 60, 13);
 
-        getContentPane().add(jPanel2);
-        jPanel2.setBounds(50, 50, 335, 162);
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(30, 50, 33, 13);
 
-        setBounds(0, 0, 522, 350);
+        jLabel3.setText("jLabel3");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(30, 90, 33, 13);
+
+        jLabel4.setText("jLabel4");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(30, 120, 33, 13);
+        getContentPane().add(txtFldNombre);
+        txtFldNombre.setBounds(120, 20, 100, 19);
+        getContentPane().add(txtFldCedul);
+        txtFldCedul.setBounds(120, 50, 55, 19);
+        getContentPane().add(txtFldDireccion);
+        txtFldDireccion.setBounds(120, 90, 90, 19);
+
+        txtFldNroCont.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFldNroContActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtFldNroCont);
+        txtFldNroCont.setBounds(120, 130, 100, 19);
+
+        botonRegistrar.setText("jButton1");
+        botonRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRegistrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonRegistrar);
+        botonRegistrar.setBounds(310, 230, 71, 21);
+
+        setBounds(0, 0, 409, 295);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtFldNroContActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldNroContActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFldNroContActionPerformed
+
+    private void botonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarActionPerformed
+        String nombre = txtFldNombre.getText();
+        String cedula = txtFldCedul.getText();
+        String direc = txtFldDireccion.getText();
+        int nroCont = Integer.valueOf(txtFldNroCont.getText());
+        Propietario p1 = new Propietario(nombre, cedula, direc, nroCont);
+        sis.addPropietario(p1);
+    }//GEN-LAST:event_botonRegistrarActionPerformed
 
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton botonRegistrar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JTextField txtFldCedul;
+    private javax.swing.JTextField txtFldDireccion;
+    private javax.swing.JTextField txtFldNombre;
+    private javax.swing.JTextField txtFldNroCont;
     // End of variables declaration//GEN-END:variables
 }

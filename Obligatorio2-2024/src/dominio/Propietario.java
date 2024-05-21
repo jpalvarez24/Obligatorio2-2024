@@ -54,6 +54,11 @@ public class Propietario {
     public void setNumContacto(int numContacto) {
         this.numContacto = numContacto;
     }
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
     
     
 }
