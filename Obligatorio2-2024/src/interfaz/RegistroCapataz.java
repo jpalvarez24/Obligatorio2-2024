@@ -24,8 +24,12 @@ public class RegistroCapataz extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 400, 260);
 
         setBounds(0, 0, 414, 337);
     }// </editor-fold>//GEN-END:initComponents
@@ -33,5 +37,6 @@ public class RegistroCapataz extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

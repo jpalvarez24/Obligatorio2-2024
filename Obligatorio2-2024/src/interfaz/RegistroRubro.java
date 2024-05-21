@@ -5,8 +5,7 @@ import dominio.*;
 
 public class RegistroRubro extends javax.swing.JFrame {
 
-    private Sistema sis;
-   
+    
     public RegistroRubro() {
         initComponents();
     }
@@ -14,6 +13,7 @@ public class RegistroRubro extends javax.swing.JFrame {
     public RegistroRubro(Sistema unSistema){
         sis = unSistema;
         initComponents();
+        cargarLista();
     }
 
     /**
@@ -60,6 +60,11 @@ public class RegistroRubro extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButton1.setText("Registrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -107,11 +112,29 @@ public class RegistroRubro extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 416, 243);
+        jPanel1.setBounds(0, 0, 419, 256);
 
         setBounds(0, 0, 430, 280);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        String nombre = jTextFieldNombre.getText();
+        String desc = jTextFieldDesc.getText();
+        Rubro r1 = new Rubro(nombre, desc);
+        sis.addRubro(r1);
+        jTextFieldNombre.setText("");
+        jTextFieldDesc.setText("");
+        cargarLista();
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
+    public void cargarLista(){
+        String [] rubrosArray = new String [sis.getListaRubros().size()];
+        for (int i = 0; i < sis.getListaRubros().size(); i++) {
+            rubrosArray [i] = sis.getListaRubros().get(i).toString();
+        }
+        jListaRubros.setListData(rubrosArray);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -125,4 +148,5 @@ public class RegistroRubro extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldDesc;
     private javax.swing.JTextField jTextFieldNombre;
     // End of variables declaration//GEN-END:variables
+    private Sistema sis;
 }
