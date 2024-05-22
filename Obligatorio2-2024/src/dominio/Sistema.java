@@ -24,9 +24,7 @@ public class Sistema extends Observable{
         setChanged();
         notifyObservers();
     }
-    public Rubro[] getVectorRubros() {
-        return (Rubro []) this.listaRubros.toArray();
-    }
+    
     public void addPropietario(Propietario unPropietario){
         listaPropietarios.add(unPropietario);
     }
@@ -47,7 +45,7 @@ public class Sistema extends Observable{
         return this.listaPropietarios;
     }
     
-    public ArrayList getListaCapataces() {
+    public ArrayList<Capataz> getListaCapataces() {
         return this.listaCapataces;
     }
     

@@ -1,49 +1,40 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package interfaz;
 
 import dominio.*;
 import java.awt.Color;
 import java.awt.Insets;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.JButton;
 
-public class RegistroObra extends javax.swing.JFrame {
+public class RegistroObra extends javax.swing.JFrame implements Observer {
 
     private Sistema sis;
 
     public RegistroObra(Sistema unSistema) {
         sis = unSistema;
         initComponents();
-        for (int i = 1; i <= 4; i++) {
+        this.sis.addObserver(this);
+        for (int i = 0; i <= 3; i++) {
             JButton nuevo = new JButton();
             nuevo.setMargin(new Insets(-5, -5, -5, -5));
             nuevo.setBackground(Color.BLACK);
             nuevo.setForeground(Color.WHITE);
-            nuevo.setText("texto"); // texto ejemplo, a completar
+            nuevo.setText(sis.getListaRubros().get(i).toString()); // texto ejemplo, a completar
             nuevo.addActionListener(new RubroListener());
             panelGrid.add(nuevo);
         }
-        cargarListaPropietarios();
-        cargarListaCapataces();
+        modeloAPantalla();
     }
-
-    public void cargarListaPropietarios() {
-        String[] listaProp = new String[sis.getListaPropietarios().size()];
-        for (int i = 0; i < sis.getListaPropietarios().size(); i++) {
-            listaProp[i] = sis.getListaPropietarios().get(i).toString();
-        }
-        jListProp.setListData(listaProp);
-
+    
+    @Override
+    public void update(Observable o, Object ob) {
+        modeloAPantalla();
     }
-
-    public void cargarListaCapataces() {
-        String[] listaCap = new String[sis.getListaCapataces().size()];
-        for (int i = 0; i < sis.getListaCapataces().size(); i++) {
-            listaCap[i] = sis.getListaCapataces().get(i).toString();
-        }
-        jListCap.setListData(listaCap);
+    public void modeloAPantalla(){
+        jListProp.setListData(sis.getListaPropietarios().toArray());
+        jListCap.setListData(sis.getListaCapataces().toArray());
     }
 
     @SuppressWarnings("unchecked")
@@ -51,9 +42,9 @@ public class RegistroObra extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jListProp = new javax.swing.JList<>();
+        jListProp = new javax.swing.JList();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jListCap = new javax.swing.JList<>();
+        jListCap = new javax.swing.JList();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -81,35 +72,35 @@ public class RegistroObra extends javax.swing.JFrame {
 
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(380, 20, 33, 13);
+        jLabel1.setBounds(380, 20, 37, 16);
 
         jTextField1.setText("jTextField1");
         getContentPane().add(jTextField1);
-        jTextField1.setBounds(380, 40, 57, 19);
+        jTextField1.setBounds(380, 40, 63, 22);
 
         jLabel2.setText("jLabel2");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(380, 80, 33, 13);
+        jLabel2.setBounds(380, 80, 37, 16);
 
         jTextField2.setText("jTextField2");
         getContentPane().add(jTextField2);
-        jTextField2.setBounds(380, 100, 57, 19);
+        jTextField2.setBounds(380, 100, 63, 22);
 
         jLabel3.setText("jLabel3");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(380, 140, 33, 13);
+        jLabel3.setBounds(380, 140, 37, 16);
         getContentPane().add(jSpinner1);
-        jSpinner1.setBounds(380, 170, 50, 20);
+        jSpinner1.setBounds(380, 170, 50, 22);
         getContentPane().add(jSpinner2);
-        jSpinner2.setBounds(440, 170, 50, 20);
+        jSpinner2.setBounds(440, 170, 50, 22);
 
         jLabel4.setText("jLabel4");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(370, 220, 33, 13);
+        jLabel4.setBounds(370, 220, 37, 16);
 
         jLabel5.setText("jLabel5");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(470, 220, 33, 13);
+        jLabel5.setBounds(470, 220, 37, 16);
 
         jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +109,7 @@ public class RegistroObra extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(480, 380, 71, 21);
+        jButton1.setBounds(480, 380, 77, 25);
 
         panelGrid.setLayout(new java.awt.GridLayout(0, 2));
         getContentPane().add(panelGrid);
@@ -139,8 +130,8 @@ public class RegistroObra extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JList<String> jListCap;
-    private javax.swing.JList<String> jListProp;
+    private javax.swing.JList jListCap;
+    private javax.swing.JList jListProp;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jSpinner1;

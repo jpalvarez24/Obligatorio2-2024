@@ -2,7 +2,6 @@
 package interfaz;
 
 import dominio.*;
-import java.awt.Graphics;
 import java.util.Observable;
 import java.util.Observer;
  // implementar observer en todas las clases
@@ -27,7 +26,8 @@ public class RegistroRubro extends javax.swing.JFrame implements Observer{
     
     public void modeloAPantalla(){
         
-        jListaRubros.setListData(sis.getVectorRubros());
+        jListaRubros.setListData(sis.getListaRubros().toArray());
+        
     }
     
     @SuppressWarnings("unchecked")
@@ -121,7 +121,7 @@ public class RegistroRubro extends javax.swing.JFrame implements Observer{
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 416, 243);
+        jPanel1.setBounds(0, 0, 419, 256);
 
         setBounds(0, 0, 430, 280);
     }// </editor-fold>//GEN-END:initComponents
@@ -136,14 +136,14 @@ public class RegistroRubro extends javax.swing.JFrame implements Observer{
         jTextFieldDesc.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
     
-    /**public void cargarLista(){
+    /*public void cargarLista(){
         String [] rubrosArray = new String [sis.getListaRubros().size()];
         for (int i = 0; i < sis.getListaRubros().size(); i++) {
             rubrosArray [i] = sis.getListaRubros().get(i).toString();
         }
         jListaRubros.setListData(rubrosArray);
     }
-    **/
+    */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
