@@ -16,6 +16,7 @@ public class Obra {
     private int mesComienzo;
     private int anoComienzo;
     private int presupuesto;
+    private int gastosPend;
 
     public Obra(Propietario propietario, Capataz capataz, int numPermisoObra, String direccion, int mesComienzo, int anoComienzo, int presupuesto) {
         this.propietario = propietario;
@@ -25,6 +26,7 @@ public class Obra {
         this.mesComienzo = mesComienzo;
         this.anoComienzo = anoComienzo;
         this.presupuesto = presupuesto;
+        this.gastosPend = 0;
     }
     
     

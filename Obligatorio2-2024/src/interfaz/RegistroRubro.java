@@ -136,14 +136,6 @@ public class RegistroRubro extends javax.swing.JFrame implements Observer{
         jTextFieldDesc.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
     
-    /*public void cargarLista(){
-        String [] rubrosArray = new String [sis.getListaRubros().size()];
-        for (int i = 0; i < sis.getListaRubros().size(); i++) {
-            rubrosArray [i] = sis.getListaRubros().get(i).toString();
-        }
-        jListaRubros.setListData(rubrosArray);
-    }
-    */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
