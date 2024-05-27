@@ -4,11 +4,13 @@
  */
 package dominio;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Juan Pedro Alvarez-281369
  */
-public class Capataz {
+public class Capataz implements Serializable{
     private String nombre;
     private String cedula;
     private String direccion;

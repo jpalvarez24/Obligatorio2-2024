@@ -25,105 +25,126 @@ public class RegistroGastoObra extends javax.swing.JFrame implements Observer{
         modeloAPantalla();
     }
     public void modeloAPantalla(){
-        jListaObras.setListData(sis.getListaObras().toArray());
         jListaRubros.setListData(sis.getListaRubros().toArray());
+        jListaObras.setListData(sis.getListaObras().toArray());
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jListaObras = new javax.swing.JList();
-        jScrollPane2 = new javax.swing.JScrollPane();
         jListaRubros = new javax.swing.JList();
-        jLabel1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jListaObras = new javax.swing.JList();
         lblNroPermiso = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         lblDireccion = new javax.swing.JLabel();
         btnRegistrar = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
         txtFldMonto = new javax.swing.JTextField();
         spinnerMes = new javax.swing.JSpinner();
-        jLabel6 = new javax.swing.JLabel();
         spinnerAno = new javax.swing.JSpinner();
-        jLabel7 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtAreaDesc = new javax.swing.JTextArea();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jListaObras.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jListaObras);
+        jScrollPane1.setViewportView(jListaRubros);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(30, 30, 140, 122);
+        jScrollPane1.setBounds(270, 70, 200, 120);
 
-        jListaRubros.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(jListaRubros);
+        jScrollPane2.setViewportView(jListaObras);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(380, 30, 140, 122);
+        jScrollPane2.setBounds(20, 70, 200, 120);
 
-        jLabel1.setText("Permiso Nro:");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(200, 70, 70, 13);
-
-        lblNroPermiso.setText("jLabel2");
+        lblNroPermiso.setText("0");
         getContentPane().add(lblNroPermiso);
-        lblNroPermiso.setBounds(290, 70, 50, 13);
+        lblNroPermiso.setBounds(130, 250, 50, 13);
 
-        jLabel3.setText("Direccion:");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(200, 100, 50, 13);
-
-        lblDireccion.setText("jLabel4");
+        lblDireccion.setText("0");
         getContentPane().add(lblDireccion);
-        lblDireccion.setBounds(290, 100, 31, 13);
+        lblDireccion.setBounds(130, 210, 20, 40);
 
+        btnRegistrar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnRegistrar.setText("Registrar");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnRegistrar);
-        btnRegistrar.setBounds(490, 370, 75, 21);
-
-        jLabel5.setText("Monro:");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(30, 170, 50, 13);
-
-        txtFldMonto.setText("jTextField1");
+        btnRegistrar.setBounds(400, 390, 90, 20);
         getContentPane().add(txtFldMonto);
-        txtFldMonto.setBounds(30, 190, 55, 19);
+        txtFldMonto.setBounds(270, 210, 70, 19);
 
         spinnerMes.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
         getContentPane().add(spinnerMes);
-        spinnerMes.setBounds(30, 240, 50, 20);
-
-        jLabel6.setText("Mes/ Ano");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(30, 220, 50, 13);
+        spinnerMes.setBounds(270, 260, 50, 20);
         getContentPane().add(spinnerAno);
-        spinnerAno.setBounds(90, 240, 50, 20);
-
-        jLabel7.setText("Descripcion:");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(30, 280, 60, 13);
+        spinnerAno.setBounds(330, 260, 50, 20);
 
         txtAreaDesc.setColumns(20);
         txtAreaDesc.setRows(5);
         jScrollPane3.setViewportView(txtAreaDesc);
 
         getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(30, 300, 166, 71);
+        jScrollPane3.setBounds(270, 310, 166, 70);
 
-        setBounds(0, 0, 595, 441);
+        jLabel8.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel8.setText("Monto:");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(270, 190, 50, 20);
+
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel9.setText("Direccion:");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(20, 240, 120, 30);
+
+        jLabel10.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel10.setText("       Mes      /    Año");
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(250, 240, 120, 20);
+
+        jLabel11.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel11.setText("Descripcion:");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(270, 290, 80, 20);
+
+        jLabel12.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel12.setText("Permiso Numero:");
+        getContentPane().add(jLabel12);
+        jLabel12.setBounds(20, 220, 120, 20);
+
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel5.setText("Registro de gasto de obra");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(160, 20, 186, 17);
+
+        jLabel13.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel13.setText("Rubros:");
+        getContentPane().add(jLabel13);
+        jLabel13.setBounds(270, 50, 100, 20);
+
+        jLabel14.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel14.setText("Obras:");
+        getContentPane().add(jLabel14);
+        jLabel14.setBounds(20, 50, 120, 20);
+
+        setBounds(0, 0, 517, 457);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -132,11 +153,14 @@ public class RegistroGastoObra extends javax.swing.JFrame implements Observer{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JList jListaObras;
     private javax.swing.JList jListaRubros;
     private javax.swing.JScrollPane jScrollPane1;

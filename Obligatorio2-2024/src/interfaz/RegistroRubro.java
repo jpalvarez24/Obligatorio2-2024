@@ -121,7 +121,7 @@ public class RegistroRubro extends javax.swing.JFrame implements Observer{
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 419, 256);
+        jPanel1.setBounds(0, 0, 416, 243);
 
         setBounds(0, 0, 430, 280);
     }// </editor-fold>//GEN-END:initComponents

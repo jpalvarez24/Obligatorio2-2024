@@ -5,6 +5,17 @@
 package interfaz;
 
 import dominio.Sistema;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.BufferedOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Juan Pedro Alvarez-281369
@@ -12,10 +23,30 @@ import dominio.Sistema;
 public class MenuPrincipal extends javax.swing.JFrame {
 
     private Sistema sis;
-    
+
     public MenuPrincipal(Sistema unSistema) {
         sis = unSistema;
         initComponents();
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                try {
+                    serializacion();
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+    }
+
+    public void serializacion() throws FileNotFoundException, IOException {
+        FileOutputStream f = new FileOutputStream("archivo.ser");
+        BufferedOutputStream b = new BufferedOutputStream(f);
+        ObjectOutputStream s = new ObjectOutputStream(b);
+        s.writeObject(sis);
+        s.close();
     }
 
     @SuppressWarnings("unchecked")
@@ -170,7 +201,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem btnEstadoObra;

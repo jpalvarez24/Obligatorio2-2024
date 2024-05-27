@@ -4,17 +4,19 @@
  */
 package dominio;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Juan Pedro Alvarez-281369
  */
-public class Propietario {
+public class Propietario implements Serializable{
     private String nombre;
-    private String cedula;
+    private int cedula;
     private String direccion;
     private int numContacto;
 
-    public Propietario(String nombre, String cedula, String direccion, int numContacto) {
+    public Propietario(String nombre, int cedula, String direccion, int numContacto) {
         this.nombre = nombre;
         this.cedula = cedula;
         this.direccion = direccion;
@@ -31,11 +33,11 @@ public class Propietario {
         this.nombre = nombre;
     }
 
-    public String getCedula() {
+    public int getCedula() {
         return cedula;
     }
 
-    public void setCedula(String cedula) {
+    public void setCedula(int cedula) {
         this.cedula = cedula;
     }
 

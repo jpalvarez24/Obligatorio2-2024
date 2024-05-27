@@ -4,11 +4,14 @@
  */
 package dominio;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+
 /**
  *
  * @author Juan Pedro Alvarez-281369
  */
-public class Obra {
+public class Obra implements Serializable{
     private Propietario propietario;
     private Capataz capataz;
     private int numPermisoObra;
@@ -17,6 +20,7 @@ public class Obra {
     private int anoComienzo;
     private int presupuesto;
     private int gastosPend;
+    private ArrayList<Gasto> listaGastos;
 
     public Obra(Propietario propietario, Capataz capataz, int numPermisoObra, String direccion, int mesComienzo, int anoComienzo, int presupuesto) {
         this.propietario = propietario;
@@ -27,10 +31,10 @@ public class Obra {
         this.anoComienzo = anoComienzo;
         this.presupuesto = presupuesto;
         this.gastosPend = 0;
+        this.listaGastos = new ArrayList<>();
     }
     
     
-
     public Propietario getPropietario() {
         return propietario;
     }
@@ -87,5 +91,8 @@ public class Obra {
         this.presupuesto = presupuesto;
     }
     
+    public ArrayList<Gasto> getListaGastos(){
+        return this.listaGastos;
+    }
     
 }

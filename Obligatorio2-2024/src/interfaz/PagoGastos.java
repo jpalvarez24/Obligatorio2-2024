@@ -53,7 +53,7 @@ public class PagoGastos extends javax.swing.JFrame implements Observer {
         jScrollPane2.setViewportView(jListaGastos);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(310, 30, 170, 160);
+        jScrollPane2.setBounds(290, 30, 170, 160);
 
         setBounds(0, 0, 653, 531);
     }// </editor-fold>//GEN-END:initComponents

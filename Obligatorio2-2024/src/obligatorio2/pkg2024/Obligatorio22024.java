@@ -5,6 +5,7 @@
 package obligatorio2.pkg2024;
 
 import interfaz.MenuArranque;
+import interfaz.Bienvenida;
 import dominio.Sistema;
 /**
  *
@@ -15,7 +16,9 @@ public class Obligatorio22024 {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        Bienvenida bienvenidaDialog = new Bienvenida(null, true);
+        bienvenidaDialog.setVisible(true);
         Sistema sis = new Sistema();
         new MenuArranque(sis).setVisible(true);
     }

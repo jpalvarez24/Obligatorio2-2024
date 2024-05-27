@@ -4,11 +4,13 @@
  */
 package dominio;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Juan Pedro Alvarez-281369
  */
-public class Rubro {
+public class Rubro implements Serializable{
     private String nombreRubro;
     private String descripcion;
 
