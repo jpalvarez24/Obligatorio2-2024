@@ -19,7 +19,6 @@ public class Bienvenida extends javax.swing.JDialog {
     public Bienvenida(Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        // Crear un temporizador para cerrar el diálogo después de 3 segundos
         Timer timer = new Timer(2500, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

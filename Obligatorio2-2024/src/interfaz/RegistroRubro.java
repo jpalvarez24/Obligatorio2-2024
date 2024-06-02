@@ -30,6 +30,11 @@ public class RegistroRubro extends javax.swing.JFrame implements Observer{
         
     }
     
+    public void cambiarDescripcion(){
+        Rubro rubro = (Rubro) jListaRubros.getSelectedValue();
+        //String nombre = jTextFieldNombre.setText();
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -135,7 +140,7 @@ public class RegistroRubro extends javax.swing.JFrame implements Observer{
         jTextFieldNombre.setText("");
         jTextFieldDesc.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

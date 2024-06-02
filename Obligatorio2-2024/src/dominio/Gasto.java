@@ -16,7 +16,6 @@ public class Gasto implements Serializable{
     private int mes;
     private int ano;
     private String descripcion;
-        
     
     public Gasto(Rubro rubro, int monto, int mes, int ano, String descripcion){
         this.rubro = rubro;
@@ -27,5 +26,8 @@ public class Gasto implements Serializable{
     }
     
     //public void setMonto
-    
+    @Override
+    public String toString(){
+        return "Gasto Nro: ";
+    }
 }

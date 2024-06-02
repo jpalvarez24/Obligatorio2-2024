@@ -6,6 +6,7 @@ package interfaz;
 
 import dominio.Sistema;
 import dominio.Propietario;
+import javax.swing.JOptionPane;
 public class RegistroPropietario extends javax.swing.JFrame {
 
     private Sistema sis;
@@ -37,11 +38,11 @@ public class RegistroPropietario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
         getContentPane().add(txtFldNombre);
-        txtFldNombre.setBounds(130, 90, 190, 20);
+        txtFldNombre.setBounds(130, 60, 190, 20);
         getContentPane().add(txtFldCedul);
-        txtFldCedul.setBounds(130, 60, 190, 19);
+        txtFldCedul.setBounds(130, 90, 190, 19);
         getContentPane().add(txtFldDireccion);
-        txtFldDireccion.setBounds(130, 150, 190, 19);
+        txtFldDireccion.setBounds(130, 120, 190, 19);
 
         txtFldNroCont.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -49,7 +50,7 @@ public class RegistroPropietario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtFldNroCont);
-        txtFldNroCont.setBounds(130, 120, 190, 19);
+        txtFldNroCont.setBounds(130, 150, 190, 19);
 
         botonRegistrar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         botonRegistrar.setText("Registrar");
@@ -95,15 +96,42 @@ public class RegistroPropietario extends javax.swing.JFrame {
 
     private void botonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarActionPerformed
         String nombre = txtFldNombre.getText();
-        int cedula = Integer.valueOf(txtFldCedul.getText());
-        String direc = txtFldDireccion.getText();
-        int nroCont = Integer.valueOf(txtFldNroCont.getText());
+    String cedulaStr = txtFldCedul.getText();
+    String direc = txtFldDireccion.getText();
+    String nroContStr = txtFldNroCont.getText();
+
+    // Validación de nombre: debe ser un string no vacío
+    if (nombre == null || nombre.trim().isEmpty() || !nombre.matches("[a-zA-Z\\s]+")) {
+        JOptionPane.showMessageDialog(this, "El nombre debe ser un string no vacío y solo contener letras.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Validación de cédula: debe ser un número de 8 dígitos
+    if (cedulaStr.length() != 8 || !cedulaStr.matches("\\d+")) {
+        JOptionPane.showMessageDialog(this, "La cédula debe ser un número de 8 dígitos.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    int cedula = Integer.valueOf(cedulaStr);
+
+    // Validación de dirección: debe ser un string no vacío
+    if (direc == null || direc.trim().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "La dirección debe ser un string no vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Validación de número de contacto: debe ser un número de 9 dígitos
+    if (nroContStr.length() != 9 || !nroContStr.matches("\\d+")) {
+        JOptionPane.showMessageDialog(this, "El número de contacto debe ser un número de 9 dígitos.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    int nroCont = Integer.valueOf(nroContStr);
         Propietario p1 = new Propietario(nombre, cedula, direc, nroCont);
         sis.addPropietario(p1);
         txtFldNombre.setText("");
         txtFldCedul.setText("");
         txtFldDireccion.setText("");
         txtFldNroCont.setText("");
+        
     }//GEN-LAST:event_botonRegistrarActionPerformed
 
     

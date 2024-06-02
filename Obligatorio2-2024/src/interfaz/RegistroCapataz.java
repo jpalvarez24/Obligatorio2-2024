@@ -41,25 +41,31 @@ public class RegistroCapataz extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
         jLabel2.setText("Cedula:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(110, 130, 90, 20);
+        jLabel2.setBounds(10, 90, 90, 20);
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
         jLabel3.setText("Dirección:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(100, 170, 90, 20);
+        jLabel3.setBounds(10, 120, 90, 20);
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
         jLabel4.setText("Año de  ingreso a la empresa:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(10, 210, 210, 20);
+        jLabel4.setBounds(10, 150, 160, 20);
         getContentPane().add(txtFldNombre);
-        txtFldNombre.setBounds(170, 90, 130, 19);
+        txtFldNombre.setBounds(170, 60, 210, 19);
         getContentPane().add(txtFldCedula);
-        txtFldCedula.setBounds(170, 130, 130, 19);
+        txtFldCedula.setBounds(170, 90, 210, 19);
+
+        txtFldDireccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFldDireccionActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtFldDireccion);
-        txtFldDireccion.setBounds(170, 170, 130, 19);
+        txtFldDireccion.setBounds(170, 120, 210, 19);
         getContentPane().add(txtFldAnoIngreso);
-        txtFldAnoIngreso.setBounds(170, 210, 130, 20);
+        txtFldAnoIngreso.setBounds(170, 150, 210, 20);
 
         jButton1.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
         jButton1.setText("Agregar");
@@ -69,19 +75,19 @@ public class RegistroCapataz extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(250, 260, 130, 21);
+        jButton1.setBounds(300, 180, 80, 21);
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
         jLabel5.setText("Nombre:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(110, 90, 70, 20);
+        jLabel5.setBounds(10, 60, 70, 20);
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setText("Registro Capataz");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(160, 30, 120, 17);
+        jLabel6.setBounds(140, 20, 120, 17);
 
-        setBounds(0, 0, 414, 337);
+        setBounds(0, 0, 414, 251);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -93,6 +99,10 @@ public class RegistroCapataz extends javax.swing.JFrame {
         Capataz c1 = new Capataz(nombre, cedula, direc, anoIngreso);
         sis.addCapataz(c1); 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtFldDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldDireccionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFldDireccionActionPerformed
 
     
 

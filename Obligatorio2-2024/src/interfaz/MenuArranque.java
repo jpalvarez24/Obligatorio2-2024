@@ -132,7 +132,7 @@ public class MenuArranque extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSisVacioActionPerformed
 
     private void btnSoloRubrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSoloRubrosActionPerformed
-        
+        //sis.setList
         Rubro r1 = new Rubro("Pintura","Renovación de Pintura");
         Rubro r2 = new Rubro("Sanitaria","Reparación de Sanitaria");
         Rubro r3 = new Rubro("Eléctrica","Instalación Eléctrica");

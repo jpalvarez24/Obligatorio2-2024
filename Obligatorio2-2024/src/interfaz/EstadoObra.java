@@ -28,9 +28,9 @@ public class EstadoObra extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        jList1 = new javax.swing.JList();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblPropietario = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -38,36 +38,32 @@ public class EstadoObra extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
+        jList2 = new javax.swing.JList();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        lblCapataz = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        lblMes = new javax.swing.JLabel();
+        lblPresupuesto = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        lblSaldo = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jList3 = new javax.swing.JList<>();
+        jList3 = new javax.swing.JList();
         jLabel18 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jList4 = new javax.swing.JList<>();
+        jList4 = new javax.swing.JList();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
+        lblAno = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(jList1);
 
         getContentPane().add(jScrollPane1);
@@ -77,9 +73,9 @@ public class EstadoObra extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(220, 20, 60, 13);
 
-        jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(300, 20, 33, 13);
+        lblPropietario.setText("jLabel2");
+        getContentPane().add(lblPropietario);
+        lblPropietario.setBounds(300, 20, 33, 13);
 
         jLabel3.setText("Capataz: ");
         getContentPane().add(jLabel3);
@@ -105,11 +101,6 @@ public class EstadoObra extends javax.swing.JFrame {
         getContentPane().add(jLabel8);
         jLabel8.setBounds(590, 90, 30, 13);
 
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane2.setViewportView(jList2);
 
         getContentPane().add(jScrollPane2);
@@ -123,21 +114,21 @@ public class EstadoObra extends javax.swing.JFrame {
         getContentPane().add(jLabel10);
         jLabel10.setBounds(20, 10, 50, 13);
 
-        jLabel11.setText("jLabel11");
-        getContentPane().add(jLabel11);
-        jLabel11.setBounds(590, 20, 38, 13);
+        lblCapataz.setText("jLabel11");
+        getContentPane().add(lblCapataz);
+        lblCapataz.setBounds(590, 20, 38, 13);
 
         jLabel12.setText("Comienzo obra:");
         getContentPane().add(jLabel12);
         jLabel12.setBounds(220, 40, 80, 13);
 
-        jLabel13.setText("jLabel13");
-        getContentPane().add(jLabel13);
-        jLabel13.setBounds(320, 40, 38, 13);
+        lblMes.setText("jLabel13");
+        getContentPane().add(lblMes);
+        lblMes.setBounds(320, 40, 38, 13);
 
-        jLabel14.setText("jLabel14");
-        getContentPane().add(jLabel14);
-        jLabel14.setBounds(350, 60, 38, 13);
+        lblPresupuesto.setText("jLabel14");
+        getContentPane().add(lblPresupuesto);
+        lblPresupuesto.setBounds(340, 60, 38, 13);
 
         jLabel15.setText("label");
         getContentPane().add(jLabel15);
@@ -147,15 +138,10 @@ public class EstadoObra extends javax.swing.JFrame {
         getContentPane().add(jLabel16);
         jLabel16.setBounds(560, 90, 10, 13);
 
-        jLabel17.setText("jLabel17");
-        getContentPane().add(jLabel17);
-        jLabel17.setBounds(630, 90, 38, 13);
+        lblSaldo.setText("jLabel17");
+        getContentPane().add(lblSaldo);
+        lblSaldo.setBounds(630, 90, 38, 13);
 
-        jList3.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane3.setViewportView(jList3);
 
         getContentPane().add(jScrollPane3);
@@ -165,11 +151,6 @@ public class EstadoObra extends javax.swing.JFrame {
         getContentPane().add(jLabel18);
         jLabel18.setBounds(210, 130, 140, 13);
 
-        jList4.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane4.setViewportView(jList4);
 
         getContentPane().add(jScrollPane4);
@@ -199,7 +180,11 @@ public class EstadoObra extends javax.swing.JFrame {
         getContentPane().add(jLabel24);
         jLabel24.setBounds(430, 330, 170, 13);
 
-        setBounds(0, 0, 713, 412);
+        lblAno.setText("jLabel2");
+        getContentPane().add(lblAno);
+        lblAno.setBounds(370, 40, 33, 13);
+
+        setBounds(0, 0, 755, 446);
     }// </editor-fold>//GEN-END:initComponents
 
     
@@ -207,16 +192,11 @@ public class EstadoObra extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -229,13 +209,19 @@ public class EstadoObra extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
-    private javax.swing.JList<String> jList3;
-    private javax.swing.JList<String> jList4;
+    private javax.swing.JList jList1;
+    private javax.swing.JList jList2;
+    private javax.swing.JList jList3;
+    private javax.swing.JList jList4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JLabel lblAno;
+    private javax.swing.JLabel lblCapataz;
+    private javax.swing.JLabel lblMes;
+    private javax.swing.JLabel lblPresupuesto;
+    private javax.swing.JLabel lblPropietario;
+    private javax.swing.JLabel lblSaldo;
     // End of variables declaration//GEN-END:variables
 }

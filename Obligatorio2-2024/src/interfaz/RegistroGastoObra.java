@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package interfaz;
-import dominio.Sistema;
+import dominio.*;
 import java.util.Observable;
 import java.util.Observer;
 /**
@@ -61,6 +61,11 @@ public class RegistroGastoObra extends javax.swing.JFrame implements Observer{
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(270, 70, 200, 120);
 
+        jListaObras.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jListaObrasValueChanged(evt);
+            }
+        });
         jScrollPane2.setViewportView(jListaObras);
 
         getContentPane().add(jScrollPane2);
@@ -68,11 +73,9 @@ public class RegistroGastoObra extends javax.swing.JFrame implements Observer{
 
         lblNroPermiso.setText("0");
         getContentPane().add(lblNroPermiso);
-        lblNroPermiso.setBounds(130, 250, 50, 13);
-
-        lblDireccion.setText("0");
+        lblNroPermiso.setBounds(130, 220, 50, 20);
         getContentPane().add(lblDireccion);
-        lblDireccion.setBounds(130, 210, 20, 40);
+        lblDireccion.setBounds(130, 250, 90, 30);
 
         btnRegistrar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnRegistrar.setText("Registrar");
@@ -107,7 +110,7 @@ public class RegistroGastoObra extends javax.swing.JFrame implements Observer{
         jLabel9.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel9.setText("Direccion:");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(20, 240, 120, 30);
+        jLabel9.setBounds(20, 250, 120, 30);
 
         jLabel10.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel10.setText("       Mes      /    Año");
@@ -127,7 +130,7 @@ public class RegistroGastoObra extends javax.swing.JFrame implements Observer{
         jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel5.setText("Registro de gasto de obra");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(160, 20, 186, 17);
+        jLabel5.setBounds(150, 10, 186, 17);
 
         jLabel13.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel13.setText("Rubros:");
@@ -143,8 +146,27 @@ public class RegistroGastoObra extends javax.swing.JFrame implements Observer{
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        // TODO add your handling code here:
+        Obra obra = (Obra) jListaObras.getSelectedValue();
+        Rubro rubro = (Rubro) jListaRubros.getSelectedValue();
+        int monto = Integer.parseInt(txtFldMonto.getText());
+        int mes = (int) spinnerMes.getValue();
+        int ano = (int) spinnerAno.getValue();
+        String descp = txtAreaDesc.getText();
+        
+        Gasto g1 = new Gasto(rubro,monto,mes,ano,descp);
+        obra.addGasto(g1);
+        txtFldMonto.setText("");
+        txtAreaDesc.setText("");
+        spinnerMes.setValue(1);
+        spinnerAno.setValue(2020);
     }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void jListaObrasValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListaObrasValueChanged
+        Obra obra = (Obra) jListaObras.getSelectedValue();
+        lblDireccion.setText(obra.getDireccion());
+        lblNroPermiso.setText(String.valueOf(obra.getNumPermisoObra()));
+        
+    }//GEN-LAST:event_jListaObrasValueChanged
 
     /**
      * @param args the command line arguments

@@ -6,14 +6,16 @@ package dominio;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Observable;
 
 /**
  *
  * @author Juan Pedro Alvarez-281369
  */
-public class Obra implements Serializable{
+public class Obra extends Observable implements Serializable{
     private Propietario propietario;
     private Capataz capataz;
+    private Rubro rubro;
     private int numPermisoObra;
     private String direccion;
     private int mesComienzo;
@@ -22,8 +24,9 @@ public class Obra implements Serializable{
     private int gastosPend;
     private ArrayList<Gasto> listaGastos;
 
-    public Obra(Propietario propietario, Capataz capataz, int numPermisoObra, String direccion, int mesComienzo, int anoComienzo, int presupuesto) {
+    public Obra(Propietario propietario,Rubro rubro, Capataz capataz, int numPermisoObra, String direccion, int mesComienzo, int anoComienzo, int presupuesto) {
         this.propietario = propietario;
+        this.rubro = rubro;
         this.capataz = capataz;
         this.numPermisoObra = numPermisoObra;
         this.direccion = direccion;
@@ -34,30 +37,28 @@ public class Obra implements Serializable{
         this.listaGastos = new ArrayList<>();
     }
     
+    public Rubro getRubro(){
+        return rubro;
+    }
+    
     
     public Propietario getPropietario() {
         return propietario;
     }
 
-    public void setPropietario(Propietario propietario) {
-        this.propietario = propietario;
-    }
+    
 
     public Capataz getCapataz() {
         return capataz;
     }
 
-    public void setCapataz(Capataz capataz) {
-        this.capataz = capataz;
-    }
+    
 
     public int getNumPermisoObra() {
         return numPermisoObra;
     }
 
-    public void setNumPermisoObra(int numPermisoObra) {
-        this.numPermisoObra = numPermisoObra;
-    }
+    
 
     public String getDireccion() {
         return direccion;
@@ -93,6 +94,17 @@ public class Obra implements Serializable{
     
     public ArrayList<Gasto> getListaGastos(){
         return this.listaGastos;
+    }
+    
+    public void addGasto(Gasto unGasto){
+        listaGastos.add(unGasto);
+        setChanged();
+        notifyObservers();
+    }
+
+    @Override
+    public String toString() {
+        return "Obra de: "+ propietario;
     }
     
 }
