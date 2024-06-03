@@ -15,18 +15,20 @@ import java.util.Observable;
 public class Obra extends Observable implements Serializable{
     private Propietario propietario;
     private Capataz capataz;
-    private Rubro rubro;
     private int numPermisoObra;
     private String direccion;
     private int mesComienzo;
     private int anoComienzo;
     private int presupuesto;
     private int gastosPend;
+    private int totalGastado;
+    private int totalGastadoReintegrado;
+    private int totalGastadoNoReintegrado;
     private ArrayList<Gasto> listaGastos;
+    private ArrayList<CostoRubro> listaRubros;
 
-    public Obra(Propietario propietario,Rubro rubro, Capataz capataz, int numPermisoObra, String direccion, int mesComienzo, int anoComienzo, int presupuesto) {
+    public Obra(Propietario propietario, Capataz capataz, int numPermisoObra, String direccion, int mesComienzo, int anoComienzo, int presupuesto) {
         this.propietario = propietario;
-        this.rubro = rubro;
         this.capataz = capataz;
         this.numPermisoObra = numPermisoObra;
         this.direccion = direccion;
@@ -34,18 +36,34 @@ public class Obra extends Observable implements Serializable{
         this.anoComienzo = anoComienzo;
         this.presupuesto = presupuesto;
         this.gastosPend = 0;
+        this.totalGastado = 0;
+        this.totalGastadoNoReintegrado = 0;
+        this.totalGastadoReintegrado = 0;
         this.listaGastos = new ArrayList<>();
+        this.listaRubros = new ArrayList<>();
     }
     
-    public Rubro getRubro(){
-        return rubro;
+    public ArrayList<CostoRubro> getListaRubrosObra(){
+        return this.listaRubros;
     }
     
+    public void addRubroAObra(CostoRubro costoRubro){
+        listaRubros.add(costoRubro);
+    }
     
     public Propietario getPropietario() {
         return propietario;
     }
-
+    
+    public void agregaGasto(int unGasto){
+        int total = this.totalGastado + unGasto;
+        this.totalGastado = total;
+    }
+    
+    public int reintegraGasto(int unGasto){
+        int reintegro = this.totalGastado - unGasto;
+        return reintegro;
+    }
     
 
     public Capataz getCapataz() {
@@ -100,6 +118,16 @@ public class Obra extends Observable implements Serializable{
         listaGastos.add(unGasto);
         setChanged();
         notifyObservers();
+        gastosPend++;
+    }
+    
+    public void pagaGasto(Gasto unGasto){
+        listaGastos.remove(unGasto);
+        gastosPend--;
+    }
+    
+    public int informarNumeroGasto(){
+        return this.gastosPend;
     }
 
     @Override

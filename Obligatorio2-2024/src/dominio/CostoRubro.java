@@ -1,13 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package dominio;
 
-/**
- *
- * @author Juan Pedro Alvarez-281369
- */
-public class CostoRubro {
-    
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public class CostoRubro implements Serializable {
+
+    private Rubro rubro;
+    private int presupuesto;
+
+    public CostoRubro(Rubro rubro, int presupuesto) {
+        this.rubro = rubro;
+        this.presupuesto = presupuesto;
+    }
+
+    public int getPresupuesto() {
+        return this.presupuesto;
+    }
+
+    public Rubro getRubro() {
+        return this.rubro;
+    }
 }

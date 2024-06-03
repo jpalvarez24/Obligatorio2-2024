@@ -5,49 +5,40 @@ import java.awt.Color;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class RegistroObra extends javax.swing.JFrame implements Observer {
 
     private Sistema sis;
-    int presupuesto;
+    private int presupuestoTotal = 0;
+    private HashMap<Rubro, Integer> rubrosSeleccionados = new HashMap<>();
+    
     private class RubroListener implements ActionListener {
-
         public void actionPerformed(ActionEvent e) {
-// este código se ejecutará al presionar el botón, obtengo cuál botón
             JButton cual = ((JButton) e.getSource());
-            cual.setBackground(Color.BLUE);
-            JDialog ventanaMonto = new JDialog();
-            ventanaMonto.setTitle("Ingrese el presupuesto estimado");
-            ventanaMonto.setSize(300,150);
-            ventanaMonto.setLayout(null);
-            
-            JLabel label = new JLabel("Ingrese el monto del presupuesto:");
-            JTextField textFieldMonto = new JTextField();
-            JButton btnAceptar = new JButton("Aceptar");
-ventanaMonto.add(label);
-            ventanaMonto.add(textFieldMonto);
-            ventanaMonto.add(btnAceptar);
-            ventanaMonto.setVisible(true);
-            btnAceptar.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    try {
-                        presupuesto = Integer.parseInt(textFieldMonto.getText());
-                        if (presupuesto == 0) {
-                            cual.setBackground(Color.BLACK);
-                        }
-                        ventanaMonto.dispose();
-                    } catch (NumberFormatException ex) {
-                        textFieldMonto.setText("Ingrese un número válido");
-                    }
+            int presupuesto = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el monto:"));
+            try{
+                if(presupuesto <= 0){
+                    cual.setBackground(Color.BLACK);
+                }else{
+                    cual.setBackground(Color.BLUE);
+                    Rubro rubro = sis.getListaRubros().get(panelGrid.getComponentZOrder(cual));
+                    rubrosSeleccionados.put(rubro, presupuesto);
+                    presupuestoTotal += presupuesto;
+                    actualizarPresupuestoTotal();
                 }
-            });
-
+            
+            } catch (NumberFormatException ex){
+                JOptionPane.showMessageDialog(null, "Ingrese un monto valido");
+            }
+            
         }
     }
 
@@ -76,6 +67,10 @@ ventanaMonto.add(label);
     public void modeloAPantalla() {
         jListProp.setListData(sis.getListaPropietarios().toArray());
         jListCap.setListData(sis.getListaCapataces().toArray());
+    }
+    
+    private void actualizarPresupuestoTotal() {
+        jLabel5.setText(String.valueOf(presupuestoTotal));
     }
 
     @SuppressWarnings("unchecked")
@@ -199,23 +194,22 @@ ventanaMonto.add(label);
         String dir = txtFldDireccion.getText();
         int mes = (int) spinnerMes.getValue();
         int ano = (int) spinnerAno.getValue();
-        Rubro unRubro = null;
-        for (java.awt.Component comp : panelGrid.getComponents()) {
-            if (comp instanceof JButton) {
-                JButton boton = (JButton) comp;
-                if (boton.getBackground() == Color.BLUE) { // Verificar si el botón está seleccionado
-                    unRubro = (Rubro) boton.getClientProperty("rubro");
-                    break;
-                }
-            }
+        
+        Obra obraNueva = new Obra(prop, cap, numPerm, dir, mes, ano, presupuestoTotal);
+        
+        for(Rubro rubro: rubrosSeleccionados.keySet()){
+            int presupuesto = rubrosSeleccionados.get(rubro);
+            obraNueva.addRubroAObra(new CostoRubro(rubro,presupuesto));
         }
-        int presupuesto = 1;
-        Obra obraNueva = new Obra(prop,unRubro, cap, numPerm, dir, mes, ano, presupuesto);
+    
         sis.addObra(obraNueva);
         txtFldDireccion.setText("");
         txtFldNroPerm.setText("");
         spinnerAno.setValue(2020);
         spinnerMes.setValue(1);
+        rubrosSeleccionados.clear();
+        presupuestoTotal = 0;
+        actualizarPresupuestoTotal();
     }//GEN-LAST:event_btnRegistrarObraActionPerformed
 
     private void txtFldNroPermActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldNroPermActionPerformed

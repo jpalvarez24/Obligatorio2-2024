@@ -155,6 +155,7 @@ public class RegistroGastoObra extends javax.swing.JFrame implements Observer{
         
         Gasto g1 = new Gasto(rubro,monto,mes,ano,descp);
         obra.addGasto(g1);
+        
         txtFldMonto.setText("");
         txtAreaDesc.setText("");
         spinnerMes.setValue(1);

@@ -86,9 +86,9 @@ public class PagoGastos extends javax.swing.JFrame implements Observer {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(550, 460, 61, 21);
+        jButton1.setBounds(350, 270, 63, 21);
 
-        setBounds(0, 0, 653, 531);
+        setBounds(0, 0, 510, 397);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
