@@ -24,9 +24,6 @@ public class Rubro implements Serializable{
         return nombreRubro;
     }
 
-    public void setNombreRubro(String nombreRubro) {
-        this.nombreRubro = nombreRubro;
-    }
 
     public String getDescripcion() {
         return descripcion;

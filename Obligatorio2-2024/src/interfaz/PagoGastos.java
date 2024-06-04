@@ -67,7 +67,7 @@ public class PagoGastos extends javax.swing.JFrame implements Observer {
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setText("Pago de gastos");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(240, 20, 186, 17);
+        jLabel4.setBounds(170, 30, 130, 17);
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel1.setText("Obras:");
@@ -86,7 +86,7 @@ public class PagoGastos extends javax.swing.JFrame implements Observer {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(350, 270, 63, 21);
+        jButton1.setBounds(410, 320, 63, 21);
 
         setBounds(0, 0, 510, 397);
     }// </editor-fold>//GEN-END:initComponents

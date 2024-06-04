@@ -20,4 +20,8 @@ public class CostoRubro implements Serializable {
     public Rubro getRubro() {
         return this.rubro;
     }
+    @Override
+    public String toString(){
+        return String.format("<html><div style='text-align: center;'>&bull; <b>%s</b> $%d</div></html>", rubro, presupuesto);
+    }
 }

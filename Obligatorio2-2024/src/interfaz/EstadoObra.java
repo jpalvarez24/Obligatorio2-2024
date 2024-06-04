@@ -4,18 +4,35 @@
  */
 package interfaz;
 
+import dominio.Obra;
 import dominio.Sistema;
+import java.awt.Color;
+import java.util.Observable;
+import java.util.Observer;
 /**
  *
  * @author Juan Pedro Alvarez-281369
  */
-public class EstadoObra extends javax.swing.JFrame {
+public class EstadoObra extends javax.swing.JFrame implements Observer {
 
     private Sistema sis;
     
     public EstadoObra(Sistema unSistema) {
         sis = unSistema;
         initComponents();
+        modeloAPantalla();
+        jLabel21.setBackground(Color.GREEN);
+        jLabel21.setOpaque(true);
+    }
+    
+    @Override
+    public void update(Observable o, Object ob) {
+        modeloAPantalla();
+    }
+
+    public void modeloAPantalla() {
+        jListaObras.setListData(sis.getListaObras().toArray());
+        
     }
 
     /**
@@ -28,7 +45,7 @@ public class EstadoObra extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        jListaObras = new javax.swing.JList();
         jLabel1 = new javax.swing.JLabel();
         lblPropietario = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -38,7 +55,7 @@ public class EstadoObra extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList();
+        jListaPresupuesto = new javax.swing.JList();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         lblCapataz = new javax.swing.JLabel();
@@ -49,10 +66,10 @@ public class EstadoObra extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         lblSaldo = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jList3 = new javax.swing.JList();
+        jListaRubrosGastos = new javax.swing.JList();
         jLabel18 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jList4 = new javax.swing.JList();
+        jListaGastosRubros = new javax.swing.JList();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -64,7 +81,12 @@ public class EstadoObra extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jScrollPane1.setViewportView(jList1);
+        jListaObras.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jListaObrasValueChanged(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jListaObras);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(20, 30, 150, 60);
@@ -75,7 +97,7 @@ public class EstadoObra extends javax.swing.JFrame {
 
         lblPropietario.setText("jLabel2");
         getContentPane().add(lblPropietario);
-        lblPropietario.setBounds(300, 20, 33, 13);
+        lblPropietario.setBounds(300, 20, 50, 13);
 
         jLabel3.setText("Capataz: ");
         getContentPane().add(jLabel3);
@@ -99,9 +121,9 @@ public class EstadoObra extends javax.swing.JFrame {
 
         jLabel8.setText("Saldo:");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(590, 90, 30, 13);
+        jLabel8.setBounds(610, 90, 50, 13);
 
-        jScrollPane2.setViewportView(jList2);
+        jScrollPane2.setViewportView(jListaPresupuesto);
 
         getContentPane().add(jScrollPane2);
         jScrollPane2.setBounds(10, 150, 160, 140);
@@ -116,7 +138,7 @@ public class EstadoObra extends javax.swing.JFrame {
 
         lblCapataz.setText("jLabel11");
         getContentPane().add(lblCapataz);
-        lblCapataz.setBounds(590, 20, 38, 13);
+        lblCapataz.setBounds(590, 20, 50, 13);
 
         jLabel12.setText("Comienzo obra:");
         getContentPane().add(jLabel12);
@@ -124,25 +146,25 @@ public class EstadoObra extends javax.swing.JFrame {
 
         lblMes.setText("jLabel13");
         getContentPane().add(lblMes);
-        lblMes.setBounds(320, 40, 38, 13);
+        lblMes.setBounds(310, 40, 50, 13);
 
         lblPresupuesto.setText("jLabel14");
         getContentPane().add(lblPresupuesto);
-        lblPresupuesto.setBounds(340, 60, 38, 13);
+        lblPresupuesto.setBounds(340, 60, 50, 13);
 
         jLabel15.setText("label");
         getContentPane().add(jLabel15);
-        jLabel15.setBounds(350, 90, 22, 13);
+        jLabel15.setBounds(350, 90, 50, 13);
 
         jLabel16.setText("lbl");
         getContentPane().add(jLabel16);
-        jLabel16.setBounds(560, 90, 10, 13);
+        jLabel16.setBounds(560, 90, 30, 13);
 
         lblSaldo.setText("jLabel17");
         getContentPane().add(lblSaldo);
-        lblSaldo.setBounds(630, 90, 38, 13);
+        lblSaldo.setBounds(650, 90, 50, 13);
 
-        jScrollPane3.setViewportView(jList3);
+        jScrollPane3.setViewportView(jListaRubrosGastos);
 
         getContentPane().add(jScrollPane3);
         jScrollPane3.setBounds(210, 150, 150, 140);
@@ -151,7 +173,7 @@ public class EstadoObra extends javax.swing.JFrame {
         getContentPane().add(jLabel18);
         jLabel18.setBounds(210, 130, 140, 13);
 
-        jScrollPane4.setViewportView(jList4);
+        jScrollPane4.setViewportView(jListaGastosRubros);
 
         getContentPane().add(jScrollPane4);
         jScrollPane4.setBounds(390, 150, 260, 140);
@@ -182,10 +204,22 @@ public class EstadoObra extends javax.swing.JFrame {
 
         lblAno.setText("jLabel2");
         getContentPane().add(lblAno);
-        lblAno.setBounds(370, 40, 33, 13);
+        lblAno.setBounds(380, 40, 50, 13);
 
         setBounds(0, 0, 755, 446);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jListaObrasValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListaObrasValueChanged
+        Obra o1 = (Obra) jListaObras.getSelectedValue();
+        jListaPresupuesto.setListData(o1.getListaRubrosObra().toArray());
+        jListaRubrosGastos.setListData(o1.getListaRubrosObra().toArray());
+        lblPropietario.setText(o1.getPropietario().getNombre());
+        lblCapataz.setText(o1.getCapataz().getNombre());
+        lblMes.setText(String.valueOf(o1.getMesComienzo()));
+        lblAno.setText(String.valueOf(o1.getAnoComienzo()));
+        lblPresupuesto.setText(String.valueOf(o1.getPresupuesto()));
+        
+    }//GEN-LAST:event_jListaObrasValueChanged
 
     
 
@@ -209,10 +243,10 @@ public class EstadoObra extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList jList1;
-    private javax.swing.JList jList2;
-    private javax.swing.JList jList3;
-    private javax.swing.JList jList4;
+    private javax.swing.JList jListaGastosRubros;
+    private javax.swing.JList jListaObras;
+    private javax.swing.JList jListaPresupuesto;
+    private javax.swing.JList jListaRubrosGastos;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

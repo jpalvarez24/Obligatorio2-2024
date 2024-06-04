@@ -4,8 +4,12 @@
  */
 package interfaz;
 import dominio.*;
+import java.awt.Color;
+import java.awt.Component;
 import java.util.Observable;
 import java.util.Observer;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.JList;
 /**
  *
  * @author Juan Pedro Alvarez-281369
@@ -13,6 +17,25 @@ import java.util.Observer;
 public class RegistroGastoObra extends javax.swing.JFrame implements Observer{
 
     private Sistema sis;
+    
+    static class CustomListCellRenderer extends DefaultListCellRenderer {
+        @Override
+        public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+            // Get the default component from the superclass
+            Component component = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+
+            // Customize the colors for selected and non-selected items
+            if (isSelected) {
+                component.setBackground(Color.GREEN); // Background color for selected item
+                component.setForeground(Color.WHITE); // Text color for selected item
+            } else {
+                component.setBackground(Color.WHITE); // Background color for non-selected item
+                component.setForeground(Color.BLACK); // Text color for non-selected item
+            }
+
+            return component;
+        }
+    }
     
     public RegistroGastoObra(Sistema unSistema) {
         sis = unSistema;
@@ -147,6 +170,7 @@ public class RegistroGastoObra extends javax.swing.JFrame implements Observer{
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         Obra obra = (Obra) jListaObras.getSelectedValue();
+        
         Rubro rubro = (Rubro) jListaRubros.getSelectedValue();
         int monto = Integer.parseInt(txtFldMonto.getText());
         int mes = (int) spinnerMes.getValue();
@@ -164,8 +188,15 @@ public class RegistroGastoObra extends javax.swing.JFrame implements Observer{
 
     private void jListaObrasValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListaObrasValueChanged
         Obra obra = (Obra) jListaObras.getSelectedValue();
+        
         lblDireccion.setText(obra.getDireccion());
         lblNroPermiso.setText(String.valueOf(obra.getNumPermisoObra()));
+        
+        jListaObras.setCellRenderer(new CustomListCellRenderer());
+        
+        
+        
+    
         
     }//GEN-LAST:event_jListaObrasValueChanged
 

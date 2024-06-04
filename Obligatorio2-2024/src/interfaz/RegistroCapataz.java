@@ -98,6 +98,10 @@ public class RegistroCapataz extends javax.swing.JFrame {
         int anoIngreso = Integer.valueOf(txtFldAnoIngreso.getText());
         Capataz c1 = new Capataz(nombre, cedula, direc, anoIngreso);
         sis.addCapataz(c1); 
+        txtFldNombre.setText("");
+        txtFldAnoIngreso.setText("");
+        txtFldCedula.setText("");
+        txtFldDireccion.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtFldDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldDireccionActionPerformed

@@ -4,6 +4,7 @@ package interfaz;
 import dominio.*;
 import java.util.Observable;
 import java.util.Observer;
+import javax.swing.JButton;
  // implementar observer en todas las clases
 public class RegistroRubro extends javax.swing.JFrame implements Observer{
 
@@ -62,6 +63,11 @@ public class RegistroRubro extends javax.swing.JFrame implements Observer{
         jLabel2.setText("Descripcion:");
 
         jListaRubros.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jListaRubros.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jListaRubrosValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(jListaRubros);
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -140,6 +146,15 @@ public class RegistroRubro extends javax.swing.JFrame implements Observer{
         jTextFieldNombre.setText("");
         jTextFieldDesc.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jListaRubrosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListaRubrosValueChanged
+        Rubro r1 = (Rubro) jListaRubros.getSelectedValue();
+        JButton botonModificar = new JButton();
+        jTextFieldNombre.setText(r1.getNombreRubro());
+        jTextFieldDesc.setText(r1.getDescripcion());
+        String desc = jTextFieldDesc.getText();
+        
+    }//GEN-LAST:event_jListaRubrosValueChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

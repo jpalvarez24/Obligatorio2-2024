@@ -28,6 +28,6 @@ public class Gasto implements Serializable{
     //public void setMonto
     @Override
     public String toString(){
-        return "Gasto Nro: ";
+        return "No." + "de " + this.mes + "/" + this.ano + " " + this.descripcion + " $ " + this.monto;
     }
 }

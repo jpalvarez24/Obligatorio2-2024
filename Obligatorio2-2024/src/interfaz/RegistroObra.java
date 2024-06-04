@@ -23,21 +23,32 @@ public class RegistroObra extends javax.swing.JFrame implements Observer {
     private class RubroListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             JButton cual = ((JButton) e.getSource());
-            int presupuesto = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el monto:"));
+            
             try{
-                if(presupuesto <= 0){
-                    cual.setBackground(Color.BLACK);
-                }else{
-                    cual.setBackground(Color.BLUE);
-                    Rubro rubro = sis.getListaRubros().get(panelGrid.getComponentZOrder(cual));
-                    rubrosSeleccionados.put(rubro, presupuesto);
-                    presupuestoTotal += presupuesto;
+                int presupuesto = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el monto:"));
+                Rubro rubro = sis.getListaRubros().get(panelGrid.getComponentZOrder(cual));
+                if (presupuesto <= 0) {
+                // Deseleccionar rubro
+                cual.setBackground(Color.BLACK);
+                if (rubrosSeleccionados.containsKey(rubro)) {
+                    presupuestoTotal -= rubrosSeleccionados.get(rubro);
+                    rubrosSeleccionados.remove(rubro);
                     actualizarPresupuestoTotal();
                 }
-            
-            } catch (NumberFormatException ex){
-                JOptionPane.showMessageDialog(null, "Ingrese un monto valido");
+            } else {
+                // Seleccionar rubro
+                if (rubrosSeleccionados.containsKey(rubro)) {
+                    presupuestoTotal -= rubrosSeleccionados.get(rubro);
+                }
+                rubrosSeleccionados.put(rubro, presupuesto);
+                presupuestoTotal += presupuesto;
+                cual.setBackground(Color.BLUE);
+                actualizarPresupuestoTotal();
             }
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Ingrese un monto válido");
+        }
             
         }
     }
