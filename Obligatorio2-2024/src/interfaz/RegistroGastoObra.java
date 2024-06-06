@@ -18,24 +18,6 @@ public class RegistroGastoObra extends javax.swing.JFrame implements Observer{
 
     private Sistema sis;
     
-    static class CustomListCellRenderer extends DefaultListCellRenderer {
-        @Override
-        public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-            // Get the default component from the superclass
-            Component component = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-
-            // Customize the colors for selected and non-selected items
-            if (isSelected) {
-                component.setBackground(Color.GREEN); // Background color for selected item
-                component.setForeground(Color.WHITE); // Text color for selected item
-            } else {
-                component.setBackground(Color.WHITE); // Background color for non-selected item
-                component.setForeground(Color.BLACK); // Text color for non-selected item
-            }
-
-            return component;
-        }
-    }
     
     public RegistroGastoObra(Sistema unSistema) {
         sis = unSistema;
@@ -192,7 +174,6 @@ public class RegistroGastoObra extends javax.swing.JFrame implements Observer{
         lblDireccion.setText(obra.getDireccion());
         lblNroPermiso.setText(String.valueOf(obra.getNumPermisoObra()));
         
-        jListaObras.setCellRenderer(new CustomListCellRenderer());
         
         
         

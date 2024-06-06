@@ -22,9 +22,10 @@ public class Obra extends Observable implements Serializable{
     private int presupuesto;
     private int gastosPend;
     private int totalGastado;
-    private int totalGastadoReintegrado;
     private int totalGastadoNoReintegrado;
-    private ArrayList<Gasto> listaGastos;
+    private int totalGastadoReintegrado;
+    private ArrayList<Gasto> listaGastosSinReintegrar;
+    private ArrayList<Gasto> listaGastosReintegrados;
     private ArrayList<CostoRubro> listaRubros;
 
     public Obra(Propietario propietario, Capataz capataz, int numPermisoObra, String direccion, int mesComienzo, int anoComienzo, int presupuesto) {
@@ -37,93 +38,91 @@ public class Obra extends Observable implements Serializable{
         this.presupuesto = presupuesto;
         this.gastosPend = 0;
         this.totalGastado = 0;
-        this.totalGastadoNoReintegrado = 0;
         this.totalGastadoReintegrado = 0;
-        this.listaGastos = new ArrayList<>();
+        this.totalGastadoNoReintegrado = 0;
+        this.listaGastosSinReintegrar = new ArrayList<>();
+        this.listaGastosReintegrados = new ArrayList<>();
         this.listaRubros = new ArrayList<>();
-    }
-    
-    public ArrayList<CostoRubro> getListaRubrosObra(){
-        return this.listaRubros;
-    }
-    
-    public void addRubroAObra(CostoRubro costoRubro){
-        listaRubros.add(costoRubro);
     }
     
     public Propietario getPropietario() {
         return propietario;
     }
     
-    public void agregaGasto(int unGasto){
-        int total = this.totalGastado + unGasto;
-        this.totalGastado = total;
-    }
-    
-    public int reintegraGasto(int unGasto){
-        int reintegro = this.totalGastado - unGasto;
-        return reintegro;
-    }
-    
-
     public Capataz getCapataz() {
         return capataz;
     }
-
-    
 
     public int getNumPermisoObra() {
         return numPermisoObra;
     }
 
-    
-
     public String getDireccion() {
         return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
     }
 
     public int getMesComienzo() {
         return mesComienzo;
     }
 
-    public void setMesComienzo(int mesComienzo) {
-        this.mesComienzo = mesComienzo;
-    }
-
     public int getAnoComienzo() {
         return anoComienzo;
-    }
-
-    public void setAnoComienzo(int anoComienzo) {
-        this.anoComienzo = anoComienzo;
     }
 
     public int getPresupuesto() {
         return presupuesto;
     }
-
-    public void setPresupuesto(int presupuesto) {
-        this.presupuesto = presupuesto;
+    //Arraylist CostoRubro
+    public ArrayList<CostoRubro> getListaRubrosObra(){
+        return this.listaRubros;
     }
     
-    public ArrayList<Gasto> getListaGastos(){
-        return this.listaGastos;
+    public void addRubroAObra(CostoRubro costoRubro){
+        listaRubros.add(costoRubro);
+        setChanged();
+        notifyObservers();
     }
+
+    //ArrayLists gastos
+    public ArrayList<Gasto> getListaGastosReintegrados(){
+        return this.listaGastosReintegrados;
+    }
+    
+    public ArrayList<Gasto> getListaGastosNoIntegrados(){
+        return this.listaGastosSinReintegrar;
+    }
+    
     
     public void addGasto(Gasto unGasto){
-        listaGastos.add(unGasto);
+        listaGastosSinReintegrar.add(unGasto);
+        this.totalGastado += unGasto.getMontoGasto();
+        this.totalGastadoNoReintegrado += unGasto.getMontoGasto();
         setChanged();
         notifyObservers();
         gastosPend++;
     }
     
-    public void pagaGasto(Gasto unGasto){
-        listaGastos.remove(unGasto);
+    public void reintegraGasto(Gasto unGasto){
+        this.listaGastosReintegrados.add(unGasto);
+        this.listaGastosSinReintegrar.remove(unGasto);
+        this.totalGastadoNoReintegrado = this.totalGastadoNoReintegrado - unGasto.getMontoGasto();
+        this.totalGastadoReintegrado += unGasto.getMontoGasto();
+        setChanged();
+        notifyObservers();
         gastosPend--;
+        
+    }
+    
+    public int getTotalGastado(){
+        return this.totalGastado;
+    }
+    
+    public int getTotalGastadoNoReintegrado(){
+        return this.totalGastadoNoReintegrado;
+    }
+    
+    public int getTotalGastadoReintegrado(){
+        return this.totalGastadoReintegrado;
     }
     
     public int informarNumeroGasto(){

@@ -22,6 +22,6 @@ public class CostoRubro implements Serializable {
     }
     @Override
     public String toString(){
-        return String.format("<html><div style='text-align: center;'>&bull; <b>%s</b> $%d</div></html>", rubro, presupuesto);
+        return this.rubro.getNombreRubro();
     }
 }

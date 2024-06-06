@@ -4,6 +4,7 @@
  */
 package interfaz;
 
+import dominio.Gasto;
 import dominio.Sistema;
 import dominio.Obra;
 import java.util.Observable;
@@ -45,6 +46,8 @@ public class PagoGastos extends javax.swing.JFrame implements Observer {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jListaGastosReintegrados = new javax.swing.JList();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -86,18 +89,28 @@ public class PagoGastos extends javax.swing.JFrame implements Observer {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(410, 320, 63, 21);
+        jButton1.setBounds(420, 470, 63, 21);
 
-        setBounds(0, 0, 510, 397);
+        jScrollPane3.setViewportView(jListaGastosReintegrados);
+
+        getContentPane().add(jScrollPane3);
+        jScrollPane3.setBounds(140, 290, 170, 130);
+
+        setBounds(0, 0, 510, 544);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        Obra o1 = (Obra) jListaObras.getSelectedValue();
+        Gasto g1 = (Gasto)jListaGastos.getSelectedValue();
+        o1.reintegraGasto(g1);
+        jListaGastosReintegrados.setListData(o1.getListaGastosReintegrados().toArray());
+        jListaGastos.setListData(o1.getListaGastosNoIntegrados().toArray());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jListaObrasValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListaObrasValueChanged
-        Obra obraSeleccionada = (Obra) jListaObras.getSelectedValue();
-        jListaGastos.setListData(obraSeleccionada.getListaGastos().toArray());
+        Obra o1 = (Obra) jListaObras.getSelectedValue();
+        jListaGastosReintegrados.setListData(o1.getListaGastosReintegrados().toArray());
+        jListaGastos.setListData(o1.getListaGastosNoIntegrados().toArray());
     }//GEN-LAST:event_jListaObrasValueChanged
 
 
@@ -107,8 +120,10 @@ public class PagoGastos extends javax.swing.JFrame implements Observer {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JList jListaGastos;
+    private javax.swing.JList jListaGastosReintegrados;
     private javax.swing.JList jListaObras;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     // End of variables declaration//GEN-END:variables
 }

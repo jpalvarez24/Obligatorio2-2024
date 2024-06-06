@@ -4,11 +4,23 @@
  */
 package interfaz;
 
-import dominio.Obra;
-import dominio.Sistema;
+import dominio.*;
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Observable;
 import java.util.Observer;
+import javax.swing.BorderFactory;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.DefaultListModel;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.ListCellRenderer;
+
 /**
  *
  * @author Juan Pedro Alvarez-281369
@@ -16,15 +28,55 @@ import java.util.Observer;
 public class EstadoObra extends javax.swing.JFrame implements Observer {
 
     private Sistema sis;
-    
+    static Color colorSalmon = Color.decode("#ffcc64");
+    static Color colorRosado = Color.decode("#ff9c9c");
+    static Color colorVerdeClaro = Color.decode("#d0fccc");
+
+    private static void setModelJList(JList lista, Collection<?> datos) {
+        DefaultListModel<Object> modelList = new DefaultListModel<>();
+        modelList.addAll(datos);
+        lista.setModel(modelList);
+        lista.setSelectedIndex(0);
+    }
+
+    public class CustomListCellRenderer extends JPanel implements ListCellRenderer<Gasto> {
+
+        private JLabel label;
+
+        public CustomListCellRenderer() {
+            setLayout(new BorderLayout());
+            label = new JLabel();
+            label.setFont(new Font("Serif", Font.PLAIN, 18));
+            add(label, BorderLayout.CENTER);
+            setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        }
+
+        @Override
+        public Component getListCellRendererComponent(JList<? extends Gasto> list,
+                Gasto value,
+                int index,
+                boolean isSelected,
+                boolean cellHasFocus) {
+            label.setText( String.valueOf(value.getRubroGasto()));
+
+            if (isSelected) {
+                setBackground(list.getSelectionBackground());
+                label.setForeground(list.getSelectionForeground());
+            } else {
+                setBackground(list.getBackground());
+                label.setForeground(list.getForeground());
+            }
+
+            return this;
+        }
+    }
+
     public EstadoObra(Sistema unSistema) {
         sis = unSistema;
         initComponents();
         modeloAPantalla();
-        jLabel21.setBackground(Color.GREEN);
-        jLabel21.setOpaque(true);
     }
-    
+
     @Override
     public void update(Observable o, Object ob) {
         modeloAPantalla();
@@ -32,7 +84,15 @@ public class EstadoObra extends javax.swing.JFrame implements Observer {
 
     public void modeloAPantalla() {
         jListaObras.setListData(sis.getListaObras().toArray());
-        
+        jLabel21.setBackground(Color.GREEN);
+        jLabel21.setOpaque(true);
+        jLabel22.setBackground(colorVerdeClaro);
+        jLabel22.setOpaque(true);
+        jLabel23.setBackground(colorSalmon);
+        jLabel23.setOpaque(true);
+        jLabel24.setBackground(colorRosado);
+        jLabel24.setOpaque(true);
+
     }
 
     /**
@@ -62,8 +122,8 @@ public class EstadoObra extends javax.swing.JFrame implements Observer {
         jLabel12 = new javax.swing.JLabel();
         lblMes = new javax.swing.JLabel();
         lblPresupuesto = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        lblTotGastadoIntegrado = new javax.swing.JLabel();
+        lblTotGastNoIntegrado = new javax.swing.JLabel();
         lblSaldo = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jListaRubrosGastos = new javax.swing.JList();
@@ -77,6 +137,7 @@ public class EstadoObra extends javax.swing.JFrame implements Observer {
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         lblAno = new javax.swing.JLabel();
+        lblTotalGastado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -152,18 +213,23 @@ public class EstadoObra extends javax.swing.JFrame implements Observer {
         getContentPane().add(lblPresupuesto);
         lblPresupuesto.setBounds(340, 60, 50, 13);
 
-        jLabel15.setText("label");
-        getContentPane().add(jLabel15);
-        jLabel15.setBounds(350, 90, 50, 13);
+        lblTotGastadoIntegrado.setText("label");
+        getContentPane().add(lblTotGastadoIntegrado);
+        lblTotGastadoIntegrado.setBounds(350, 90, 50, 13);
 
-        jLabel16.setText("lbl");
-        getContentPane().add(jLabel16);
-        jLabel16.setBounds(560, 90, 30, 13);
+        lblTotGastNoIntegrado.setText("lbl");
+        getContentPane().add(lblTotGastNoIntegrado);
+        lblTotGastNoIntegrado.setBounds(560, 90, 30, 13);
 
         lblSaldo.setText("jLabel17");
         getContentPane().add(lblSaldo);
         lblSaldo.setBounds(650, 90, 50, 13);
 
+        jListaRubrosGastos.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jListaRubrosGastosValueChanged(evt);
+            }
+        });
         jScrollPane3.setViewportView(jListaRubrosGastos);
 
         getContentPane().add(jScrollPane3);
@@ -206,29 +272,55 @@ public class EstadoObra extends javax.swing.JFrame implements Observer {
         getContentPane().add(lblAno);
         lblAno.setBounds(380, 40, 50, 13);
 
+        lblTotalGastado.setText("jLabel2");
+        getContentPane().add(lblTotalGastado);
+        lblTotalGastado.setBounds(480, 60, 33, 13);
+
         setBounds(0, 0, 755, 446);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jListaObrasValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListaObrasValueChanged
         Obra o1 = (Obra) jListaObras.getSelectedValue();
         jListaPresupuesto.setListData(o1.getListaRubrosObra().toArray());
-        jListaRubrosGastos.setListData(o1.getListaRubrosObra().toArray());
         lblPropietario.setText(o1.getPropietario().getNombre());
         lblCapataz.setText(o1.getCapataz().getNombre());
         lblMes.setText(String.valueOf(o1.getMesComienzo()));
         lblAno.setText(String.valueOf(o1.getAnoComienzo()));
         lblPresupuesto.setText(String.valueOf(o1.getPresupuesto()));
+        lblTotalGastado.setText(String.valueOf(o1.getTotalGastado()));
+        lblTotGastNoIntegrado.setText(String.valueOf(o1.getTotalGastadoNoReintegrado()));
+        lblTotGastadoIntegrado.setText(String.valueOf(o1.getTotalGastadoReintegrado()));
+
+        ArrayList<Gasto> todosLosGastos = new ArrayList<>();
+        todosLosGastos.addAll(o1.getListaGastosNoIntegrados());
+        todosLosGastos.addAll(o1.getListaGastosReintegrados());
+
+        // Convertir el ArrayList combinado en un modelo de lista
+        DefaultListModel<Gasto> modelo = new DefaultListModel<>();
+        for (Gasto gasto : todosLosGastos) {
+            modelo.addElement(gasto);
+        }
+        
+        jListaRubrosGastos.setModel(modelo);
+        
+        jListaRubrosGastos.setCellRenderer(new CustomListCellRenderer());
         
     }//GEN-LAST:event_jListaObrasValueChanged
 
-    
+    private void jListaRubrosGastosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListaRubrosGastosValueChanged
+        Obra o1 = (Obra) jListaObras.getSelectedValue();
+        jListaGastosRubros.setListData(o1.getListaGastosNoIntegrados().toArray());
+        jListaGastosRubros.setListData(o1.getListaGastosReintegrados().toArray());
+        setModelJList(jListaGastosRubros, o1.getListaGastosNoIntegrados());
+        setModelJList(jListaGastosRubros, o1.getListaGastosReintegrados());
+        jListaGastosRubros.setCellRenderer(new CustomListCellRenderer());
+    }//GEN-LAST:event_jListaRubrosGastosValueChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
@@ -257,5 +349,8 @@ public class EstadoObra extends javax.swing.JFrame implements Observer {
     private javax.swing.JLabel lblPresupuesto;
     private javax.swing.JLabel lblPropietario;
     private javax.swing.JLabel lblSaldo;
+    private javax.swing.JLabel lblTotGastNoIntegrado;
+    private javax.swing.JLabel lblTotGastadoIntegrado;
+    private javax.swing.JLabel lblTotalGastado;
     // End of variables declaration//GEN-END:variables
 }
