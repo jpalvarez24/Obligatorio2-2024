@@ -303,6 +303,7 @@ public class EstadoObra extends javax.swing.JFrame implements Observer {
             lblTotalGastado.setText(String.valueOf(obraSeleccionada.getTotalGastado()));
             lblTotGastNoIntegrado.setText(String.valueOf(obraSeleccionada.getTotalGastadoNoReintegrado()));
             lblTotGastadoIntegrado.setText(String.valueOf(obraSeleccionada.getTotalGastadoReintegrado()));
+            lblSaldo.setText(String.valueOf(obraSeleccionada.getTotalGastado() - obraSeleccionada.getTotalGastadoReintegrado()));
 
             // Actualizar lista de rubros con gastos
             ArrayList<Rubro> rubrosConGastos = new ArrayList<>();

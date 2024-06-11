@@ -1,6 +1,7 @@
 
 package interfaz;
 
+import dominio.ArchivoLectura;
 import dominio.Sistema;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -14,6 +15,7 @@ import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 
 public class MenuPrincipal extends javax.swing.JFrame {
@@ -205,8 +207,28 @@ public class MenuPrincipal extends javax.swing.JFrame {
         int seleccion = fc.showOpenDialog(this);
         
         if(seleccion == JFileChooser.APPROVE_OPTION){
-            File fichero = fc.get
-            ArchivoLectura arch = new ArchivoLectura();
+            File fichero = fc.getSelectedFile();
+            
+            ArchivoLectura arch = new ArchivoLectura(fichero.getAbsolutePath());
+            while(arch.hayMasLineas()){
+                String [] lin = arch.linea().split("#");
+                String cedulaCap = lin[0];
+                if(!sis.existeCedulaCapataz(cedulaCap)){
+                    JOptionPane.showMessageDialog(this, "Cedula no registrada en el sistema", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                String cedulaProp = lin[1];
+                if(!sis.existeCedulaPropietario(cedulaProp)){
+                    JOptionPane.showMessageDialog(this, "Cedula no registrada en el sistema", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                String direccion = lin[2];
+                int mes = Integer.valueOf(lin[3]);
+                int ano = Integer.valueOf(lin[4]);
+                int nroPerm = Integer.valueOf(lin[5]);
+                
+                
+            }
             
         }
     }//GEN-LAST:event_btnImportacionDatosActionPerformed

@@ -31,10 +31,6 @@ public class RegistroRubro extends javax.swing.JFrame implements Observer{
         
     }
     
-    public void cambiarDescripcion(){
-        Rubro rubro = (Rubro) jListaRubros.getSelectedValue();
-        //String nombre = jTextFieldNombre.setText();
-    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -138,33 +134,33 @@ public class RegistroRubro extends javax.swing.JFrame implements Observer{
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(!sis.existeRubro(jListaRubros.getSelectedValue().toString())){
         String nombre = jTextFieldNombre.getText();
-        String desc = jTextFieldDesc.getText();
-        Rubro r1 = new Rubro(nombre, desc);
-        sis.addRubro(r1);   
-    }else{
-            for (int i = 0 ; i < sis.getListaRubros().size() ; i++) {
-                if(sis.getListaRubros().get(i).getNombreRubro() == jListaRubros.getSelectedValue().toString() ){
-                    sis.getListaRubros().get(i).setDescripcion(jTextFieldDesc.getText());
-                }
-            }
-        }
-        for (int i = 0; i < sis.getListaRubros().size(); i++) {
-            System.out.println(sis.getListaRubros().get(i).getNombreRubro());
-            System.out.println(sis.getListaRubros().get(i).getDescripcion());
-        }
-        jTextFieldNombre.setText("");
-        jTextFieldDesc.setText("");
+        String descp = jTextFieldDesc.getText();
+        Rubro r1 = null;
+        
+       if(jListaRubros.getSelectedValue() == null){
+           r1 = new Rubro(nombre, descp);
+           sis.addRubro(r1);
+       }else{
+           for(Rubro r : sis.getListaRubros()){
+               if(r.getNombreRubro().equals(jListaRubros.getSelectedValue().toString())){
+                   r.setDescripcion(descp);
+                   break;
+               }
+           }
+       }
+       modeloAPantalla();
+       jTextFieldNombre.setText("");
+       jTextFieldDesc.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jListaRubrosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListaRubrosValueChanged
         Rubro r1 = (Rubro) jListaRubros.getSelectedValue();
-        JButton botonModificar = new JButton();
-        jTextFieldNombre.setText(r1.getNombreRubro());
-        jTextFieldDesc.setText(r1.getDescripcion());
-        String desc = jTextFieldDesc.getText();
-        
+        if(r1 != null){
+            jTextFieldNombre.setText(r1.getNombreRubro());
+            jTextFieldDesc.setText(r1.getDescripcion());
+                    
+        }
     }//GEN-LAST:event_jListaRubrosValueChanged
 
 
