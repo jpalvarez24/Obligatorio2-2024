@@ -138,11 +138,22 @@ public class RegistroRubro extends javax.swing.JFrame implements Observer{
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+        if(!sis.existeRubro(jListaRubros.getSelectedValue().toString())){
         String nombre = jTextFieldNombre.getText();
         String desc = jTextFieldDesc.getText();
         Rubro r1 = new Rubro(nombre, desc);
-        sis.addRubro(r1);
+        sis.addRubro(r1);   
+    }else{
+            for (int i = 0 ; i < sis.getListaRubros().size() ; i++) {
+                if(sis.getListaRubros().get(i).getNombreRubro() == jListaRubros.getSelectedValue().toString() ){
+                    sis.getListaRubros().get(i).setDescripcion(jTextFieldDesc.getText());
+                }
+            }
+        }
+        for (int i = 0; i < sis.getListaRubros().size(); i++) {
+            System.out.println(sis.getListaRubros().get(i).getNombreRubro());
+            System.out.println(sis.getListaRubros().get(i).getDescripcion());
+        }
         jTextFieldNombre.setText("");
         jTextFieldDesc.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed

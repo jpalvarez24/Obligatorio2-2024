@@ -7,9 +7,11 @@ package interfaz;
 import dominio.Sistema;
 import dominio.Propietario;
 import javax.swing.JOptionPane;
+
 public class RegistroPropietario extends javax.swing.JFrame {
 
     private Sistema sis;
+
     public RegistroPropietario(Sistema unSistema) {
         sis = unSistema;
         initComponents();
@@ -96,45 +98,44 @@ public class RegistroPropietario extends javax.swing.JFrame {
 
     private void botonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarActionPerformed
         String nombre = txtFldNombre.getText();
-    String cedulaStr = txtFldCedul.getText();
-    String direc = txtFldDireccion.getText();
-    String nroContStr = txtFldNroCont.getText();
+        String cedulaStr = txtFldCedul.getText();
+        String direc = txtFldDireccion.getText();
+        String nroContStr = txtFldNroCont.getText();
 
-    // Validación de nombre: debe ser un string no vacío
-    if (nombre == null || nombre.trim().isEmpty() || !nombre.matches("[a-zA-Z\\s]+")) {
-        JOptionPane.showMessageDialog(this, "El nombre debe ser un string no vacío y solo contener letras.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
+        // Validación de nombre: debe ser un string no vacío
+        if (nombre == null || nombre.trim().isEmpty() || !nombre.matches("[a-zA-Z\\s]+")) {
+            JOptionPane.showMessageDialog(this, "El nombre debe ser un string no vacío y solo contener letras.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
-    // Validación de cédula: debe ser un número de 8 dígitos
-    if (cedulaStr.length() != 8 || !cedulaStr.matches("\\d+")) {
-        JOptionPane.showMessageDialog(this, "La cédula debe ser un número de 8 dígitos.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-    int cedula = Integer.valueOf(cedulaStr);
+        // Validación de cédula: debe ser un número de 8 dígitos
+        if (cedulaStr.length() != 8 || !cedulaStr.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "La cédula debe ser un número de 8 dígitos.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        int cedula = Integer.valueOf(cedulaStr);
 
-    // Validación de dirección: debe ser un string no vacío
-    if (direc == null || direc.trim().isEmpty()) {
-        JOptionPane.showMessageDialog(this, "La dirección debe ser un string no vacío.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
+        // Validación de dirección: debe ser un string no vacío
+        if (direc == null || direc.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "La dirección debe ser un string no vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
-    // Validación de número de contacto: debe ser un número de 9 dígitos
-    if (nroContStr.length() != 9 || !nroContStr.matches("\\d+")) {
-        JOptionPane.showMessageDialog(this, "El número de contacto debe ser un número de 9 dígitos.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-    int nroCont = Integer.valueOf(nroContStr);
+        // Validación de número de contacto: debe ser un número de 9 dígitos
+        if (nroContStr.length() != 9 || !nroContStr.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "El número de contacto debe ser un número de 9 dígitos.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        int nroCont = Integer.valueOf(nroContStr);
         Propietario p1 = new Propietario(nombre, cedula, direc, nroCont);
         sis.addPropietario(p1);
         txtFldNombre.setText("");
         txtFldCedul.setText("");
         txtFldDireccion.setText("");
         txtFldNroCont.setText("");
-        
+
     }//GEN-LAST:event_botonRegistrarActionPerformed
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonRegistrar;

@@ -19,7 +19,7 @@ public class Bienvenida extends javax.swing.JDialog {
     public Bienvenida(Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        Timer timer = new Timer(2500, new ActionListener() {
+        Timer timer = new Timer(2000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose(); // Cierra el diálogo cuando se alcanza el tiempo límite

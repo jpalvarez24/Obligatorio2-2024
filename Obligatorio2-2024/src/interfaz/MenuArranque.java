@@ -15,7 +15,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
+
 /**
  *
  * @author Juan Pedro Alvarez-281369
@@ -23,15 +25,13 @@ import javax.swing.Timer;
 public class MenuArranque extends javax.swing.JFrame {
 
     private Sistema sis;
-    
+
     public MenuArranque(Sistema unSistema) {
         sis = unSistema;
         initComponents();
-        
+
     }
 
-   
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -106,43 +106,49 @@ public class MenuArranque extends javax.swing.JFrame {
         setBounds(0, 0, 419, 158);
     }// </editor-fold>//GEN-END:initComponents
 
+    //Sistema anterior (Deserializacion)
+
     private void btnSisAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSisAnteriorActionPerformed
+        String mipath = "archivo.ser";
         Sistema sisAnt = null;
         try {
-            FileInputStream ff = new FileInputStream("archivo.ser");
+            FileInputStream ff = new FileInputStream(mipath);
             BufferedInputStream bb = new BufferedInputStream(ff);
             ObjectInputStream ss = new ObjectInputStream(bb);
             sisAnt = (Sistema) ss.readObject();
             ss.close();
-            
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(MenuArranque.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException | IOException ex) {
-            Logger.getLogger(MenuArranque.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException | ClassNotFoundException e) {
+            // Muestra mensaje al usuario y registra el error
+            JOptionPane.showMessageDialog(this, "Archivo no encontrado: archivo.ser", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        if(sisAnt != null){
+
+        if (sisAnt != null) {
             new MenuPrincipal(sisAnt).setVisible(true);
-        }else{
-            System.out.println("Deserializacion fallida");
+        } else {
+            JOptionPane.showMessageDialog(this, "Deserialización fallida", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnSisAnteriorActionPerformed
+
+    //Sistema vacio
 
     private void btnSisVacioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSisVacioActionPerformed
         new MenuPrincipal(sis).setVisible(true);
     }//GEN-LAST:event_btnSisVacioActionPerformed
 
+    //Sistema con solo rubros
+
     private void btnSoloRubrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSoloRubrosActionPerformed
-        //sis.setList
-        Rubro r1 = new Rubro("Pintura","Renovación de Pintura");
-        Rubro r2 = new Rubro("Sanitaria","Reparación de Sanitaria");
-        Rubro r3 = new Rubro("Eléctrica","Instalación Eléctrica");
-        Rubro r4 = new Rubro("Carpintería","Trabajo en Madera");
-        Rubro r5 = new Rubro("Albañilería","Reparación de Paredes");
-        Rubro r6 = new Rubro("Pisos","Instalación de pisos");
-        Rubro r7 = new Rubro("Cambio de Ventanas","Reemplazo de Ventanas");
-        Rubro r8 = new Rubro("Baño","Remodelación de baño");
-        Rubro r9 = new Rubro("Cocina","Renovación de Cocina");
-        Rubro r10 = new Rubro("Aislamiento térmico","Mejora Térmica");
+
+        Rubro r1 = new Rubro("Pintura", "Renovación de Pintura");
+        Rubro r2 = new Rubro("Sanitaria", "Reparación de Sanitaria");
+        Rubro r3 = new Rubro("Eléctrica", "Instalación Eléctrica");
+        Rubro r4 = new Rubro("Carpintería", "Trabajo en Madera");
+        Rubro r5 = new Rubro("Albañilería", "Reparación de Paredes");
+        Rubro r6 = new Rubro("Pisos", "Instalación de pisos");
+        Rubro r7 = new Rubro("Cambio de Ventanas", "Reemplazo de Ventanas");
+        Rubro r8 = new Rubro("Baño", "Remodelación de baño");
+        Rubro r9 = new Rubro("Cocina", "Renovación de Cocina");
+        Rubro r10 = new Rubro("Aislamiento térmico", "Mejora Térmica");
         sis.addRubro(r1);
         sis.addRubro(r2);
         sis.addRubro(r3);
@@ -153,15 +159,11 @@ public class MenuArranque extends javax.swing.JFrame {
         sis.addRubro(r8);
         sis.addRubro(r9);
         sis.addRubro(r10);
-        
+
         new MenuPrincipal(sis).setVisible(true);
-        
+
     }//GEN-LAST:event_btnSoloRubrosActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSisAnterior;

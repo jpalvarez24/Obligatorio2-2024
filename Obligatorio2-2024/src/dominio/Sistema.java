@@ -15,10 +15,10 @@ import java.util.Observable;
 public class Sistema extends Observable implements Serializable{
     
     
-    private ArrayList listaRubros = new ArrayList();
-    private ArrayList listaPropietarios = new ArrayList();
-    private ArrayList listaCapataces = new ArrayList();
-    private ArrayList listaObras = new ArrayList();
+    private ArrayList<Rubro> listaRubros = new ArrayList();
+    private ArrayList<Propietario> listaPropietarios = new ArrayList();
+    private ArrayList<Capataz> listaCapataces = new ArrayList();
+    private ArrayList<Obra> listaObras = new ArrayList();
     
     public void addRubro(Rubro unRubro){
         listaRubros.add(unRubro);
@@ -59,6 +59,49 @@ public class Sistema extends Observable implements Serializable{
     
     public ArrayList<Obra> getListaObras() {
         return this.listaObras;
+    }
+    
+    //metodos para verificaciones
+    
+    public boolean existeCedulaCapataz(String cedula){
+        boolean ans = false;
+        for(Capataz c : listaCapataces){
+            if(c.getCedula().equals(cedula)){
+                ans = true;
+            }
+        }
+        return ans;
+    }
+    
+    public boolean existeCedulaPropietario(String cedula){
+        boolean ans = false;
+        for(Propietario prop : listaPropietarios){
+            if(prop.getCedula().equals(cedula)){
+                ans = true;
+            }
+        }
+        return ans;
+    }
+    
+    public boolean existeNumeroObra(int numRecibido){
+        boolean ans = false;
+        for(Obra obra : listaObras){
+            if(obra.getNumPermisoObra()==(numRecibido)){
+                ans = true;
+            }
+        }
+        return ans;
+                
+    }
+    
+    public boolean existeRubro(String nombre){
+        boolean ans = false;
+        for(Rubro rub : listaRubros){
+            if(rub.getNombreRubro().toLowerCase().equals(nombre.toLowerCase())){
+                ans = true;
+            }
+        }
+        return ans;
     }
     
     

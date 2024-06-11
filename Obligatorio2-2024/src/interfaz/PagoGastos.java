@@ -45,9 +45,10 @@ public class PagoGastos extends javax.swing.JFrame implements Observer {
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnReintegrar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jListaGastosReintegrados = new javax.swing.JList();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -70,7 +71,7 @@ public class PagoGastos extends javax.swing.JFrame implements Observer {
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setText("Pago de gastos");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(170, 30, 130, 17);
+        jLabel4.setBounds(180, 30, 130, 17);
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel1.setText("Obras:");
@@ -78,34 +79,39 @@ public class PagoGastos extends javax.swing.JFrame implements Observer {
         jLabel1.setBounds(30, 60, 38, 20);
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel2.setText("Gastos Impagos:");
+        jLabel2.setText("Gastos pagos:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(260, 60, 94, 20);
+        jLabel2.setBounds(150, 250, 81, 20);
 
-        jButton1.setText("Button");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnReintegrar.setText("Reintegrar");
+        btnReintegrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnReintegrarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(420, 470, 63, 21);
+        getContentPane().add(btnReintegrar);
+        btnReintegrar.setBounds(380, 420, 100, 25);
 
         jScrollPane3.setViewportView(jListaGastosReintegrados);
 
         getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(140, 290, 170, 130);
+        jScrollPane3.setBounds(150, 270, 170, 150);
 
-        setBounds(0, 0, 510, 544);
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel3.setText("Gastos Impagos:");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(260, 60, 95, 20);
+
+        setBounds(0, 0, 510, 497);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnReintegrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReintegrarActionPerformed
         Obra o1 = (Obra) jListaObras.getSelectedValue();
         Gasto g1 = (Gasto)jListaGastos.getSelectedValue();
         o1.reintegraGasto(g1);
         jListaGastosReintegrados.setListData(o1.getListaGastosReintegrados().toArray());
         jListaGastos.setListData(o1.getListaGastosNoIntegrados().toArray());
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnReintegrarActionPerformed
 
     private void jListaObrasValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListaObrasValueChanged
         Obra o1 = (Obra) jListaObras.getSelectedValue();
@@ -115,9 +121,10 @@ public class PagoGastos extends javax.swing.JFrame implements Observer {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnReintegrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JList jListaGastos;
     private javax.swing.JList jListaGastosReintegrados;

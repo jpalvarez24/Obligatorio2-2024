@@ -177,80 +177,66 @@ public class EstadoObra extends javax.swing.JFrame implements Observer {
         jScrollPane1.setViewportView(jListaObras);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(20, 30, 150, 60);
+        jScrollPane1.setBounds(20, 30, 150, 80);
 
         jLabel1.setText("Propietario:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(220, 20, 60, 13);
-
-        lblPropietario.setText("jLabel2");
+        jLabel1.setBounds(220, 20, 80, 16);
         getContentPane().add(lblPropietario);
-        lblPropietario.setBounds(300, 20, 50, 13);
+        lblPropietario.setBounds(300, 20, 70, 20);
 
         jLabel3.setText("Capataz: ");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(530, 20, 50, 13);
+        jLabel3.setBounds(520, 20, 60, 16);
 
         jLabel4.setText("Total presupuestado:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(220, 60, 100, 13);
+        jLabel4.setBounds(220, 60, 130, 16);
 
-        jLabel5.setText("Total Gastado");
+        jLabel5.setText("Total Gastado:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(400, 60, 70, 13);
+        jLabel5.setBounds(450, 60, 90, 16);
 
         jLabel6.setText("Total Gastado Ya Integrado:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(220, 90, 130, 13);
+        jLabel6.setBounds(220, 90, 170, 16);
 
         jLabel7.setText("Total gastado no integrado:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(430, 90, 130, 13);
+        jLabel7.setBounds(450, 90, 160, 16);
 
         jLabel8.setText("Saldo:");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(610, 90, 50, 13);
+        jLabel8.setBounds(680, 90, 50, 16);
 
         jScrollPane2.setViewportView(jListaPresupuesto);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(10, 150, 160, 140);
+        jScrollPane2.setBounds(10, 160, 180, 140);
 
         jLabel9.setText("Presupuesto (Rubros y montos):");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(10, 130, 150, 13);
+        jLabel9.setBounds(10, 130, 190, 16);
 
         jLabel10.setText("Lista obras");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(20, 10, 50, 13);
-
-        lblCapataz.setText("jLabel11");
+        jLabel10.setBounds(20, 10, 70, 16);
         getContentPane().add(lblCapataz);
-        lblCapataz.setBounds(590, 20, 50, 13);
+        lblCapataz.setBounds(580, 20, 70, 20);
 
         jLabel12.setText("Comienzo obra:");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(220, 40, 80, 13);
-
-        lblMes.setText("jLabel13");
+        jLabel12.setBounds(220, 40, 100, 16);
         getContentPane().add(lblMes);
-        lblMes.setBounds(310, 40, 50, 13);
-
-        lblPresupuesto.setText("jLabel14");
+        lblMes.setBounds(310, 40, 20, 20);
         getContentPane().add(lblPresupuesto);
-        lblPresupuesto.setBounds(340, 60, 50, 13);
-
-        lblTotGastadoIntegrado.setText("label");
+        lblPresupuesto.setBounds(350, 60, 70, 20);
         getContentPane().add(lblTotGastadoIntegrado);
-        lblTotGastadoIntegrado.setBounds(350, 90, 50, 13);
-
-        lblTotGastNoIntegrado.setText("lbl");
+        lblTotGastadoIntegrado.setBounds(390, 90, 50, 20);
         getContentPane().add(lblTotGastNoIntegrado);
-        lblTotGastNoIntegrado.setBounds(560, 90, 30, 13);
-
-        lblSaldo.setText("jLabel17");
+        lblTotGastNoIntegrado.setBounds(620, 90, 50, 20);
         getContentPane().add(lblSaldo);
-        lblSaldo.setBounds(650, 90, 50, 13);
+        lblSaldo.setBounds(730, 90, 50, 20);
 
         jListaRubrosConGastos.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -260,50 +246,46 @@ public class EstadoObra extends javax.swing.JFrame implements Observer {
         jScrollPane3.setViewportView(jListaRubrosConGastos);
 
         getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(210, 150, 150, 140);
+        jScrollPane3.setBounds(260, 160, 180, 140);
 
         jLabel18.setText("Rubros con gastos en la obra:");
         getContentPane().add(jLabel18);
-        jLabel18.setBounds(210, 130, 140, 13);
+        jLabel18.setBounds(260, 130, 180, 16);
 
         jScrollPane4.setViewportView(ListaGastosDelRubros);
 
         getContentPane().add(jScrollPane4);
-        jScrollPane4.setBounds(390, 150, 260, 140);
+        jScrollPane4.setBounds(490, 160, 260, 140);
 
         jLabel19.setText("Gastos del rubro seleccionado:");
         getContentPane().add(jLabel19);
-        jLabel19.setBounds(390, 120, 270, 30);
+        jLabel19.setBounds(490, 120, 270, 30);
 
         jLabel20.setText("Codigo de colores:");
         getContentPane().add(jLabel20);
-        jLabel20.setBounds(140, 310, 90, 13);
+        jLabel20.setBounds(110, 310, 120, 16);
 
         jLabel21.setText("Presupuesto y Reintegrado");
         getContentPane().add(jLabel21);
-        jLabel21.setBounds(250, 310, 122, 13);
+        jLabel21.setBounds(250, 310, 160, 16);
 
         jLabel22.setText("Presupuestado y no Reintegrado");
         getContentPane().add(jLabel22);
-        jLabel22.setBounds(250, 330, 150, 13);
+        jLabel22.setBounds(250, 330, 200, 16);
 
         jLabel23.setText("No Presupuestado y Reintegrado");
         getContentPane().add(jLabel23);
-        jLabel23.setBounds(430, 310, 150, 13);
+        jLabel23.setBounds(450, 310, 190, 16);
 
         jLabel24.setText("No Presupuestado y No Reintegrado");
         getContentPane().add(jLabel24);
-        jLabel24.setBounds(430, 330, 170, 13);
-
-        lblAno.setText("jLabel2");
+        jLabel24.setBounds(450, 330, 210, 16);
         getContentPane().add(lblAno);
-        lblAno.setBounds(380, 40, 50, 13);
-
-        lblTotalGastado.setText("jLabel2");
+        lblAno.setBounds(380, 40, 50, 0);
         getContentPane().add(lblTotalGastado);
-        lblTotalGastado.setBounds(480, 60, 33, 13);
+        lblTotalGastado.setBounds(480, 60, 0, 0);
 
-        setBounds(0, 0, 755, 446);
+        setBounds(0, 0, 806, 406);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jListaObrasValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListaObrasValueChanged

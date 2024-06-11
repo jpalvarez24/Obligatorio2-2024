@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/Application.java to edit this template
- */
+
 package interfaz;
 
 import dominio.Sistema;
@@ -16,14 +13,12 @@ import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Juan Pedro Alvarez-281369
- */
+
 public class MenuPrincipal extends javax.swing.JFrame {
 
     private Sistema sis;
-
+    
+    //Serializacion cuando se cierra la ventana
     public MenuPrincipal(Sistema unSistema) {
         sis = unSistema;
         initComponents();
@@ -165,7 +160,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         setBounds(0, 0, 671, 423);
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void btnRegistroObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroObraActionPerformed
         new RegistroObra(sis).setVisible(true);
     }//GEN-LAST:event_btnRegistroObraActionPerformed

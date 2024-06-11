@@ -212,7 +212,10 @@ public class RegistroObra extends javax.swing.JFrame implements Observer {
             int presupuesto = rubrosSeleccionados.get(rubro);
             obraNueva.addRubroAObra(new CostoRubro(rubro,presupuesto));
         }
-    
+        if(sis.existeNumeroObra(numPerm)){
+            JOptionPane.showMessageDialog(this, "Ya existe numero de obra", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         sis.addObra(obraNueva);
         txtFldDireccion.setText("");
         txtFldNroPerm.setText("");
