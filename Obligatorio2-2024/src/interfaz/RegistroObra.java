@@ -120,7 +120,7 @@ public class RegistroObra extends javax.swing.JFrame implements Observer {
         getContentPane().add(jScrollPane2);
         jScrollPane2.setBounds(220, 80, 200, 180);
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel1.setText("Permiso Nro:");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(460, 80, 120, 20);
@@ -131,12 +131,12 @@ public class RegistroObra extends javax.swing.JFrame implements Observer {
             }
         });
         getContentPane().add(txtFldNroPerm);
-        txtFldNroPerm.setBounds(460, 110, 60, 19);
+        txtFldNroPerm.setBounds(460, 110, 60, 22);
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
-        jLabel2.setText("Dirección");
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel2.setText("Dirección:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(460, 150, 90, 13);
+        jLabel2.setBounds(460, 150, 90, 14);
 
         txtFldDireccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,27 +144,27 @@ public class RegistroObra extends javax.swing.JFrame implements Observer {
             }
         });
         getContentPane().add(txtFldDireccion);
-        txtFldDireccion.setBounds(460, 170, 180, 19);
+        txtFldDireccion.setBounds(460, 170, 180, 22);
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel3.setText("Comienzo Mes / Año");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(460, 210, 130, 13);
+        jLabel3.setBounds(460, 210, 130, 14);
 
         spinnerMes.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
         getContentPane().add(spinnerMes);
-        spinnerMes.setBounds(460, 230, 50, 20);
+        spinnerMes.setBounds(460, 230, 50, 22);
         getContentPane().add(spinnerAno);
-        spinnerAno.setBounds(520, 230, 50, 20);
+        spinnerAno.setBounds(520, 230, 50, 22);
 
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel4.setText("Total Presupuesto:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(460, 300, 110, 13);
+        jLabel4.setBounds(460, 300, 110, 14);
 
         jLabel5.setText("0");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(590, 300, 31, 13);
+        jLabel5.setBounds(590, 300, 31, 16);
 
         btnRegistrarObra.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnRegistrarObra.setText("Registrar");

@@ -12,11 +12,11 @@ import java.io.Serializable;
  */
 public class Propietario implements Serializable{
     private String nombre;
-    private int cedula;
+    private String cedula;
     private String direccion;
     private int numContacto;
 
-    public Propietario(String nombre, int cedula, String direccion, int numContacto) {
+    public Propietario(String nombre, String cedula, String direccion, int numContacto) {
         this.nombre = nombre;
         this.cedula = cedula;
         this.direccion = direccion;
@@ -33,11 +33,11 @@ public class Propietario implements Serializable{
         this.nombre = nombre;
     }
 
-    public int getCedula() {
+    public String getCedula() {
         return cedula;
     }
 
-    public void setCedula(int cedula) {
+    public void setCedula(String cedula) {
         this.cedula = cedula;
     }
 

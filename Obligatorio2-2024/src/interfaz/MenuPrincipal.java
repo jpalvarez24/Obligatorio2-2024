@@ -5,6 +5,7 @@ import dominio.Sistema;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.BufferedOutputStream;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -12,6 +13,7 @@ import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 
 
 public class MenuPrincipal extends javax.swing.JFrame {
@@ -143,6 +145,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         btnImportacionDatos.setMnemonic('c');
         btnImportacionDatos.setText("Importacion de datos para obra nueva");
+        btnImportacionDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImportacionDatosActionPerformed(evt);
+            }
+        });
         helpMenu.add(btnImportacionDatos);
 
         btnExportacionDatos.setMnemonic('a');
@@ -192,6 +199,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void btnEstadoObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstadoObraActionPerformed
         new EstadoObra(sis).setVisible(true);
     }//GEN-LAST:event_btnEstadoObraActionPerformed
+
+    private void btnImportacionDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportacionDatosActionPerformed
+        JFileChooser fc = new JFileChooser();
+        int seleccion = fc.showOpenDialog(this);
+        
+        if(seleccion == JFileChooser.APPROVE_OPTION){
+            File fichero = fc.get
+            ArchivoLectura arch = new ArchivoLectura();
+            
+        }
+    }//GEN-LAST:event_btnImportacionDatosActionPerformed
 
     /**
      * @param args the command line arguments

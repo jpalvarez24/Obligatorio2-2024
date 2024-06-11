@@ -113,7 +113,10 @@ public class RegistroPropietario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "La cédula debe ser un número de 8 dígitos.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        int cedula = Integer.valueOf(cedulaStr);
+        if(sis.existeCedulaPropietario(cedulaStr)){
+            JOptionPane.showMessageDialog(this, "La cedula ya ha sido ingresada" , "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
         // Validación de dirección: debe ser un string no vacío
         if (direc == null || direc.trim().isEmpty()) {
@@ -127,7 +130,7 @@ public class RegistroPropietario extends javax.swing.JFrame {
             return;
         }
         int nroCont = Integer.valueOf(nroContStr);
-        Propietario p1 = new Propietario(nombre, cedula, direc, nroCont);
+        Propietario p1 = new Propietario(nombre, cedulaStr, direc, nroCont);
         sis.addPropietario(p1);
         txtFldNombre.setText("");
         txtFldCedul.setText("");

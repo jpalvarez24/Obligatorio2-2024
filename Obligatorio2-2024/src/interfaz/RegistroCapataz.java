@@ -24,38 +24,23 @@ public class RegistroCapataz extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         txtFldNombre = new javax.swing.JTextField();
         txtFldCedula = new javax.swing.JTextField();
         txtFldDireccion = new javax.swing.JTextField();
         txtFldAnoIngreso = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
-
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
-        jLabel2.setText("Cedula:");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(10, 90, 90, 20);
-
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
-        jLabel3.setText("Dirección:");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(10, 120, 90, 20);
-
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
-        jLabel4.setText("Año de  ingreso a la empresa:");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(10, 150, 160, 20);
         getContentPane().add(txtFldNombre);
-        txtFldNombre.setBounds(170, 60, 210, 19);
+        txtFldNombre.setBounds(130, 60, 210, 22);
         getContentPane().add(txtFldCedula);
-        txtFldCedula.setBounds(170, 90, 210, 19);
+        txtFldCedula.setBounds(130, 90, 210, 22);
 
         txtFldDireccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,9 +48,9 @@ public class RegistroCapataz extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtFldDireccion);
-        txtFldDireccion.setBounds(170, 120, 210, 19);
+        txtFldDireccion.setBounds(130, 120, 210, 22);
         getContentPane().add(txtFldAnoIngreso);
-        txtFldAnoIngreso.setBounds(170, 150, 210, 20);
+        txtFldAnoIngreso.setBounds(130, 150, 210, 20);
 
         jButton1.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
         jButton1.setText("Agregar");
@@ -75,19 +60,34 @@ public class RegistroCapataz extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(300, 180, 80, 21);
-
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
-        jLabel5.setText("Nombre:");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(10, 60, 70, 20);
+        jButton1.setBounds(270, 180, 80, 21);
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setText("Registro Capataz");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(140, 20, 120, 17);
+        jLabel6.setBounds(120, 20, 120, 17);
 
-        setBounds(0, 0, 414, 251);
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel7.setText("Año de ingreso:");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(10, 150, 110, 20);
+
+        jLabel8.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel8.setText("Nombre:");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(10, 60, 50, 20);
+
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel9.setText("Cedula:");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(10, 90, 50, 20);
+
+        jLabel10.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel10.setText("Direccion:");
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(10, 120, 80, 20);
+
+        setBounds(0, 0, 376, 251);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -112,11 +112,11 @@ public class RegistroCapataz extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField txtFldAnoIngreso;
     private javax.swing.JTextField txtFldCedula;
     private javax.swing.JTextField txtFldDireccion;

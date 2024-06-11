@@ -283,7 +283,7 @@ public class EstadoObra extends javax.swing.JFrame implements Observer {
         getContentPane().add(lblAno);
         lblAno.setBounds(380, 40, 50, 0);
         getContentPane().add(lblTotalGastado);
-        lblTotalGastado.setBounds(480, 60, 0, 0);
+        lblTotalGastado.setBounds(540, 60, 80, 20);
 
         setBounds(0, 0, 806, 406);
     }// </editor-fold>//GEN-END:initComponents
