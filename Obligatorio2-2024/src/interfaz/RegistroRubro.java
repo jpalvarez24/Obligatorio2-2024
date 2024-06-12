@@ -1,19 +1,19 @@
-
 package interfaz;
 
 import dominio.*;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JButton;
- // implementar observer en todas las clases
-public class RegistroRubro extends javax.swing.JFrame implements Observer{
+import javax.swing.JOptionPane;
+// implementar observer en todas las clases
 
-    
+public class RegistroRubro extends javax.swing.JFrame implements Observer {
+
     public RegistroRubro() {
         initComponents();
     }
-    
-    public RegistroRubro(Sistema unSistema){
+
+    public RegistroRubro(Sistema unSistema) {
         sis = unSistema;
         initComponents();
         this.sis.addObserver(this);
@@ -24,14 +24,13 @@ public class RegistroRubro extends javax.swing.JFrame implements Observer{
     public void update(Observable o, Object ob) {
         modeloAPantalla();
     }
-    
-    public void modeloAPantalla(){
-        
+
+    public void modeloAPantalla() {
+
         jListaRubros.setListData(sis.getListaRubros().toArray());
-        
+
     }
-    
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -137,29 +136,34 @@ public class RegistroRubro extends javax.swing.JFrame implements Observer{
         String nombre = jTextFieldNombre.getText();
         String descp = jTextFieldDesc.getText();
         Rubro r1 = null;
-        
-       if(jListaRubros.getSelectedValue() == null){
-           r1 = new Rubro(nombre, descp);
-           sis.addRubro(r1);
-       }else{
-           for(Rubro r : sis.getListaRubros()){
-               if(r.getNombreRubro().equals(jListaRubros.getSelectedValue().toString())){
-                   r.setDescripcion(descp);
-                   break;
-               }
-           }
-       }
-       modeloAPantalla();
-       jTextFieldNombre.setText("");
-       jTextFieldDesc.setText("");
+
+        if (nombre.isEmpty() || descp.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Nombre y Descripción no pueden estar vacíos", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (jListaRubros.getSelectedValue() == null) {
+            r1 = new Rubro(nombre, descp);
+            sis.addRubro(r1);
+        } else {
+            for (Rubro r : sis.getListaRubros()) {
+                if (r.getNombreRubro().equals(jListaRubros.getSelectedValue().toString())) {
+                    r.setDescripcion(descp);
+                    break;
+                }
+            }
+        }
+        modeloAPantalla();
+        jTextFieldNombre.setText("");
+        jTextFieldDesc.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jListaRubrosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListaRubrosValueChanged
         Rubro r1 = (Rubro) jListaRubros.getSelectedValue();
-        if(r1 != null){
+        if (r1 != null) {
             jTextFieldNombre.setText(r1.getNombreRubro());
             jTextFieldDesc.setText(r1.getDescripcion());
-                    
+
         }
     }//GEN-LAST:event_jListaRubrosValueChanged
 

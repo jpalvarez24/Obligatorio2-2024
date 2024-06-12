@@ -9,6 +9,7 @@ import dominio.Sistema;
 import dominio.Obra;
 import java.util.Observable;
 import java.util.Observer;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -106,11 +107,29 @@ public class PagoGastos extends javax.swing.JFrame implements Observer {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnReintegrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReintegrarActionPerformed
+        
         Obra o1 = (Obra) jListaObras.getSelectedValue();
         Gasto g1 = (Gasto)jListaGastos.getSelectedValue();
-        o1.reintegraGasto(g1);
+        
+        if(o1 == null){
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una obra de la lista.", "Error", JOptionPane.ERROR_MESSAGE);
+
+        }
+        
+        if(g1 == null){
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un gasto de la lista de impagos.", "Error", JOptionPane.ERROR_MESSAGE);
+
+        }
+        
+        if(g1 != null){
+            o1.reintegraGasto(g1);
         jListaGastosReintegrados.setListData(o1.getListaGastosReintegrados().toArray());
         jListaGastos.setListData(o1.getListaGastosNoIntegrados().toArray());
+        }
+        
+        jListaGastosReintegrados.setListData(o1.getListaGastosReintegrados().toArray());
+        
+        
     }//GEN-LAST:event_btnReintegrarActionPerformed
 
     private void jListaObrasValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListaObrasValueChanged

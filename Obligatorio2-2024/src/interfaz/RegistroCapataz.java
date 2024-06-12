@@ -6,10 +6,12 @@ package interfaz;
 
 import dominio.Sistema;
 import dominio.Capataz;
+import javax.swing.JOptionPane;
+
 public class RegistroCapataz extends javax.swing.JFrame {
 
     private Sistema sis;
-    
+
     public RegistroCapataz(Sistema unSistema) {
         sis = unSistema;
         initComponents();
@@ -91,24 +93,48 @@ public class RegistroCapataz extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-                                                      
+
         String nombre = txtFldNombre.getText();
         String cedula = txtFldCedula.getText();
         String direc = txtFldDireccion.getText();
-        int anoIngreso = Integer.valueOf(txtFldAnoIngreso.getText());
+        String anoIngresoStr = txtFldAnoIngreso.getText();
+
+        if (nombre == null || nombre.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El nombre debe ser un string no vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Validación de cédula: debe ser única
+        if (cedula == null || cedula.trim().isEmpty() || sis.existeCedulaCapataz(cedula)) {
+            JOptionPane.showMessageDialog(this, "La cédula debe ser un string no vacío y única.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Validación de dirección: debe ser un string no vacío
+        if (direc == null || direc.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "La dirección debe ser un string no vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (anoIngresoStr == null || anoIngresoStr.trim().isEmpty() || !anoIngresoStr.matches("\\d{4}") || Integer.parseInt(anoIngresoStr) < 1970 || Integer.parseInt(anoIngresoStr) > 2030) {
+            JOptionPane.showMessageDialog(this, "El año de ingreso debe ser un número válido de 4 dígitos.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        int anoIngreso = Integer.valueOf(anoIngresoStr);
         Capataz c1 = new Capataz(nombre, cedula, direc, anoIngreso);
-        sis.addCapataz(c1); 
+        sis.addCapataz(c1);
         txtFldNombre.setText("");
         txtFldAnoIngreso.setText("");
         txtFldCedula.setText("");
         txtFldDireccion.setText("");
+        JOptionPane.showMessageDialog(this, "Capataz registrado exitosamente.", "Información", JOptionPane.INFORMATION_MESSAGE);
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtFldDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldDireccionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFldDireccionActionPerformed
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

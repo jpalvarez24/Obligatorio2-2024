@@ -19,37 +19,40 @@ public class RegistroObra extends javax.swing.JFrame implements Observer {
     private Sistema sis;
     private int presupuestoTotal = 0;
     private HashMap<Rubro, Integer> rubrosSeleccionados = new HashMap<>();
-    
+
     private class RubroListener implements ActionListener {
+
         public void actionPerformed(ActionEvent e) {
             JButton cual = ((JButton) e.getSource());
-            
-            try{
+
+            try {
                 int presupuesto = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el monto:"));
                 Rubro rubro = sis.getListaRubros().get(panelGrid.getComponentZOrder(cual));
                 if (presupuesto <= 0) {
-                // Deseleccionar rubro
-                cual.setBackground(Color.BLACK);
-                if (rubrosSeleccionados.containsKey(rubro)) {
-                    presupuestoTotal -= rubrosSeleccionados.get(rubro);
-                    rubrosSeleccionados.remove(rubro);
+                    // Deseleccionar rubro
+                    cual.setBackground(Color.BLACK);
+                    cual.setText("<html>" + rubro.getNombreRubro() + "<br/></html>");
+                    if (rubrosSeleccionados.containsKey(rubro)) {
+                        presupuestoTotal -= rubrosSeleccionados.get(rubro);
+                        rubrosSeleccionados.remove(rubro);
+                        actualizarPresupuestoTotal();
+                    }
+                } else {
+                    // Seleccionar rubro
+                    if (rubrosSeleccionados.containsKey(rubro)) {
+                        presupuestoTotal -= rubrosSeleccionados.get(rubro);
+                    }
+                    rubrosSeleccionados.put(rubro, presupuesto);
+                    presupuestoTotal += presupuesto;
+                    cual.setBackground(Color.BLUE);
+                    cual.setText("<html>" + rubro.getNombreRubro() + "<br/>" + presupuesto + "</html>");
                     actualizarPresupuestoTotal();
                 }
-            } else {
-                // Seleccionar rubro
-                if (rubrosSeleccionados.containsKey(rubro)) {
-                    presupuestoTotal -= rubrosSeleccionados.get(rubro);
-                }
-                rubrosSeleccionados.put(rubro, presupuesto);
-                presupuestoTotal += presupuesto;
-                cual.setBackground(Color.BLUE);
-                actualizarPresupuestoTotal();
+
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "Ingrese un monto válido");
             }
 
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Ingrese un monto válido");
-        }
-            
         }
     }
 
@@ -79,7 +82,7 @@ public class RegistroObra extends javax.swing.JFrame implements Observer {
         jListProp.setListData(sis.getListaPropietarios().toArray());
         jListCap.setListData(sis.getListaCapataces().toArray());
     }
-    
+
     private void actualizarPresupuestoTotal() {
         jLabel5.setText(String.valueOf(presupuestoTotal));
     }
@@ -201,21 +204,51 @@ public class RegistroObra extends javax.swing.JFrame implements Observer {
     private void btnRegistrarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarObraActionPerformed
         Propietario prop = (Propietario) jListProp.getSelectedValue();
         Capataz cap = (Capataz) jListCap.getSelectedValue();
-        int numPerm = Integer.valueOf(txtFldNroPerm.getText());
+        String numPermStr = txtFldNroPerm.getText();
         String dir = txtFldDireccion.getText();
         int mes = (int) spinnerMes.getValue();
         int ano = (int) spinnerAno.getValue();
-        
-        Obra obraNueva = new Obra(prop, cap, numPerm, dir, mes, ano, presupuestoTotal);
-        
-        for(Rubro rubro: rubrosSeleccionados.keySet()){
-            int presupuesto = rubrosSeleccionados.get(rubro);
-            obraNueva.addRubroAObra(new CostoRubro(rubro,presupuesto));
+
+        if (prop == null) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un propietario de la lista.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+
         }
-        if(sis.existeNumeroObra(numPerm)){
-            JOptionPane.showMessageDialog(this, "Ya existe numero de obra", "Error", JOptionPane.ERROR_MESSAGE);
+
+        if (cap == null) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un capataz de la lista.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+
+        }
+
+        if (numPermStr == null || !numPermStr.matches("\\d+") || numPermStr.trim().isEmpty() || sis.existeNumeroObra(Integer.valueOf(numPermStr))) {
+            JOptionPane.showMessageDialog(this, "El número de permiso debe ser único, no vacío y solo contener números.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+
+        if (dir == null || dir.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "La dirección de la obra debe ser un string no vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (mes < 1 || mes > 12) {
+            JOptionPane.showMessageDialog(this, "El mes de comienzo debe ser un número válido entre 1 y 12.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (ano < 1000 || ano > 9999) {
+            JOptionPane.showMessageDialog(this, "El año de comienzo debe ser un número válido de 4 dígitos.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        int numPerm = Integer.valueOf(numPermStr);
+        Obra obraNueva = new Obra(prop, cap, numPerm, dir, mes, ano, presupuestoTotal);
+
+        for (Rubro rubro : rubrosSeleccionados.keySet()) {
+            int presupuesto = rubrosSeleccionados.get(rubro);
+            obraNueva.addRubroAObra(new CostoRubro(rubro, presupuesto));
+        }
+
         sis.addObra(obraNueva);
         txtFldDireccion.setText("");
         txtFldNroPerm.setText("");
@@ -224,6 +257,7 @@ public class RegistroObra extends javax.swing.JFrame implements Observer {
         rubrosSeleccionados.clear();
         presupuestoTotal = 0;
         actualizarPresupuestoTotal();
+        JOptionPane.showMessageDialog(this, "Obra registrada con exitosamente.", "Información", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnRegistrarObraActionPerformed
 
     private void txtFldNroPermActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldNroPermActionPerformed

@@ -42,9 +42,9 @@ public class RegistroPropietario extends javax.swing.JFrame {
         getContentPane().add(txtFldNombre);
         txtFldNombre.setBounds(130, 60, 190, 20);
         getContentPane().add(txtFldCedul);
-        txtFldCedul.setBounds(130, 90, 190, 19);
+        txtFldCedul.setBounds(130, 90, 190, 22);
         getContentPane().add(txtFldDireccion);
-        txtFldDireccion.setBounds(130, 120, 190, 19);
+        txtFldDireccion.setBounds(130, 120, 190, 22);
 
         txtFldNroCont.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -52,7 +52,7 @@ public class RegistroPropietario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtFldNroCont);
-        txtFldNroCont.setBounds(130, 150, 190, 19);
+        txtFldNroCont.setBounds(130, 150, 190, 22);
 
         botonRegistrar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         botonRegistrar.setText("Registrar");
@@ -62,7 +62,7 @@ public class RegistroPropietario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botonRegistrar);
-        botonRegistrar.setBounds(270, 180, 100, 20);
+        botonRegistrar.setBounds(290, 180, 90, 20);
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel5.setText("Registro de propietario");
@@ -109,10 +109,11 @@ public class RegistroPropietario extends javax.swing.JFrame {
         }
 
         // Validación de cédula: debe ser un número de 8 dígitos
-        if (cedulaStr.length() != 8 || !cedulaStr.matches("\\d+")) {
-            JOptionPane.showMessageDialog(this, "La cédula debe ser un número de 8 dígitos.", "Error", JOptionPane.ERROR_MESSAGE);
+        if (cedulaStr == null || cedulaStr.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "La cédula debe ser un String no vacio.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        
         if(sis.existeCedulaPropietario(cedulaStr)){
             JOptionPane.showMessageDialog(this, "La cedula ya ha sido ingresada" , "Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -125,7 +126,7 @@ public class RegistroPropietario extends javax.swing.JFrame {
         }
 
         // Validación de número de contacto: debe ser un número de 9 dígitos
-        if (nroContStr.length() != 9 || !nroContStr.matches("\\d+")) {
+        if (nroContStr == null || nroContStr.trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "El número de contacto debe ser un número de 9 dígitos.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }

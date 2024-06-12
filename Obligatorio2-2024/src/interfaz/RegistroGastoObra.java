@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package interfaz;
+
 import dominio.*;
 import java.awt.Color;
 import java.awt.Component;
@@ -10,29 +11,33 @@ import java.util.Observable;
 import java.util.Observer;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Juan Pedro Alvarez-281369
  */
-public class RegistroGastoObra extends javax.swing.JFrame implements Observer{
+public class RegistroGastoObra extends javax.swing.JFrame implements Observer {
 
     private Sistema sis;
-    
-    
+
     public RegistroGastoObra(Sistema unSistema) {
         sis = unSistema;
         initComponents();
         this.sis.addObserver(this);
         modeloAPantalla();
     }
+
     @Override
-    public void update(Observable o, Object ob){
+    public void update(Observable o, Object ob) {
         modeloAPantalla();
     }
-    public void modeloAPantalla(){
+
+    public void modeloAPantalla() {
         jListaRubros.setListData(sis.getListaRubros().toArray());
         jListaObras.setListData(sis.getListaObras().toArray());
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -152,39 +157,68 @@ public class RegistroGastoObra extends javax.swing.JFrame implements Observer{
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         Obra obra = (Obra) jListaObras.getSelectedValue();
-        
         Rubro rubro = (Rubro) jListaRubros.getSelectedValue();
-        int monto = Integer.parseInt(txtFldMonto.getText());
+        String descp = txtAreaDesc.getText();
+        String montoStr = txtFldMonto.getText();
         int mes = (int) spinnerMes.getValue();
         int ano = (int) spinnerAno.getValue();
-        String descp = txtAreaDesc.getText();
-        
-        Gasto g1 = new Gasto(rubro,monto,mes,ano,descp);
+
+        if (obra == null) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una obra de la lista.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (rubro == null) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un rubro de la lista.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (mes < 1 || mes > 12) {
+            JOptionPane.showMessageDialog(this, "El mes debe ser un número válido entre 1 y 12.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (ano < 2000 || ano > 2060) {
+            JOptionPane.showMessageDialog(this, "El año debe ser un número válido de 4 dígitos.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (montoStr == null || montoStr.trim().isEmpty() || !montoStr.matches("\\d+") || Integer.parseInt(montoStr) <= 0) {
+            JOptionPane.showMessageDialog(this, "El monto debe ser un número positivo.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        int monto = Integer.parseInt(montoStr);
+
+        if (descp == null || descp.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "La descripción debe ser un string no vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        Gasto g1 = new Gasto(rubro, monto, mes, ano, descp);
         obra.addGasto(g1);
-        
+
         txtFldMonto.setText("");
         txtAreaDesc.setText("");
         spinnerMes.setValue(1);
         spinnerAno.setValue(2020);
+
+        JOptionPane.showMessageDialog(this, "Gasto registrado exitosamente.", "Información", JOptionPane.INFORMATION_MESSAGE);
+
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void jListaObrasValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListaObrasValueChanged
         Obra obra = (Obra) jListaObras.getSelectedValue();
-        
+
         lblDireccion.setText(obra.getDireccion());
         lblNroPermiso.setText(String.valueOf(obra.getNumPermisoObra()));
-        
-        
-        
-        
-    
-        
+
+
     }//GEN-LAST:event_jListaObrasValueChanged
 
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrar;
