@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectOutput;
+import dominio.ArchivoGrabacion;
 import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -175,7 +175,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistroObraActionPerformed
 
     private void btnExportacionDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportacionDatosActionPerformed
-        // TODO add your handling code here:
+        ArchivoGrabacion result = new ArchivoGrabacion("Personas.txt");
+        
     }//GEN-LAST:event_btnExportacionDatosActionPerformed
 
     private void btnRegistrarCapatazActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarCapatazActionPerformed
