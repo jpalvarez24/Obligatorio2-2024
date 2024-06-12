@@ -225,9 +225,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 }
                 String direccion = lin[2];
                 int mes = Integer.valueOf(lin[3]);
-                int ano = Integer.valueOf(lin[4]);
-                int nroPerm = Integer.valueOf(lin[5]);
-                
+               
+                //que pasa mi gente
                 
             }
             
