@@ -40,7 +40,7 @@ public class Bienvenida extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/DALLE_2024-05-17_16.32.52_-_Minimalist_logo_design_for_a_construction_management_company._The_logo_should_feature_a_stylized_modern_building_outline_and_a_construction_helmet_bo (1).png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logoimg.png"))); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel3.setText("Juan Pedro Alvarez - 281369");
