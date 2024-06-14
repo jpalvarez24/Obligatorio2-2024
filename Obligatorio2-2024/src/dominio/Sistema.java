@@ -1,17 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
+
+// Juan Pedro Alvarez y Francisco Latorre
+
+
 package dominio;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Observable;
 
-/**
- *
- * @author Juan Pedro Alvarez-281369
- */
+
 public class Sistema extends Observable implements Serializable{
     
     
@@ -63,6 +61,27 @@ public class Sistema extends Observable implements Serializable{
     
     //metodos para verificaciones
     
+    public Capataz getCapatazPorCedula(String cedula){
+        Capataz ans = null;
+        for(Capataz cap : listaCapataces ){
+            if(cap.getCedula().equals(cedula)){
+                ans = cap;
+            }
+        }
+        return ans;
+    }
+    
+    public Propietario getPropietarioPorCedula(String cedula){
+        Propietario ans = null;
+        for(Propietario prop : listaPropietarios){
+            if(prop.getCedula().equals(cedula)){
+                ans = prop;
+            }
+        
+        }
+        return ans;
+    }
+    
     public boolean existeCedulaCapataz(String cedula){
         boolean ans = false;
         for(Capataz c : listaCapataces){
@@ -93,7 +112,7 @@ public class Sistema extends Observable implements Serializable{
         return ans;
                 
     }
-    
+    //Existe rubro
     public boolean existeRubro(String nombre){
         boolean ans = false;
         for(Rubro rub : listaRubros){

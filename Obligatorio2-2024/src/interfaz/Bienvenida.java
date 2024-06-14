@@ -1,7 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
+
+
+// Juan Pedro Alvarez y Francisco Latorre
+
+
 package interfaz;
 
 import java.awt.Frame;
@@ -9,10 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
-/**
- *
- * @author Juan Pedro Alvarez-281369
- */
+
 public class Bienvenida extends javax.swing.JDialog {
 
    

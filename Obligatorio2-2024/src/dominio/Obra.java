@@ -1,17 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
+
+// Juan Pedro Alvarez y Francisco Latorre
+
+
 package dominio;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Observable;
 
-/**
- *
- * @author Juan Pedro Alvarez-281369
- */
+
 public class Obra extends Observable implements Serializable{
     private Propietario propietario;
     private Capataz capataz;

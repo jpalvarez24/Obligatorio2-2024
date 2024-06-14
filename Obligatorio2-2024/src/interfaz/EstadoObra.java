@@ -1,7 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
+
+// Juan Pedro Alvarez y Francisco Latorre
+
+
 package interfaz;
 
 import dominio.*;
@@ -22,10 +23,7 @@ import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 import javax.swing.SwingConstants;
 
-/**
- *
- * @author Juan Pedro Alvarez-281369
- */
+
 public class EstadoObra extends javax.swing.JFrame implements Observer {
 
     private Sistema sis;

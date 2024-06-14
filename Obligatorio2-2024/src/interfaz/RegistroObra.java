@@ -1,3 +1,8 @@
+
+
+// Juan Pedro Alvarez y Francisco Latorre
+
+
 package interfaz;
 
 import dominio.*;

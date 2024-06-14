@@ -1,3 +1,8 @@
+
+
+// Juan Pedro Alvarez y Francisco Latorre
+
+
 package interfaz;
 
 import dominio.*;
@@ -5,7 +10,7 @@ import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-// implementar observer en todas las clases
+
 
 public class RegistroRubro extends javax.swing.JFrame implements Observer {
 

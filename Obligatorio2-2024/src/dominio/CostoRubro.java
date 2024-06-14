@@ -1,3 +1,8 @@
+
+
+// Juan Pedro Alvarez y Francisco Latorre
+
+
 package dominio;
 
 import java.io.Serializable;

@@ -1,15 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
+
+// Juan Pedro Alvarez y Francisco Latorre
+
+
 package dominio;
 
 import java.io.Serializable;
 
-/**
- *
- * @author Juan Pedro Alvarez-281369
- */
+
 public class Gasto implements Serializable{
     private Rubro rubro;
     private int monto;

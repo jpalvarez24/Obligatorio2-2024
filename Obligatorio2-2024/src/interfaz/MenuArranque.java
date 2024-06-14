@@ -1,27 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
+
+// Juan Pedro Alvarez y Francisco Latorre
+
+
 package interfaz;
 
 import dominio.Rubro;
 import dominio.Sistema;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.Timer;
 
-/**
- *
- * @author Juan Pedro Alvarez-281369
- */
+
+
 public class MenuArranque extends javax.swing.JFrame {
 
     private Sistema sis;
@@ -124,6 +117,7 @@ public class MenuArranque extends javax.swing.JFrame {
 
         if (sisAnt != null) {
             new MenuPrincipal(sisAnt).setVisible(true);
+            dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Deserialización fallida", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -133,6 +127,7 @@ public class MenuArranque extends javax.swing.JFrame {
 
     private void btnSisVacioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSisVacioActionPerformed
         new MenuPrincipal(sis).setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnSisVacioActionPerformed
 
     //Sistema con solo rubros
@@ -161,6 +156,7 @@ public class MenuArranque extends javax.swing.JFrame {
         sis.addRubro(r10);
 
         new MenuPrincipal(sis).setVisible(true);
+        dispose();
 
     }//GEN-LAST:event_btnSoloRubrosActionPerformed
 

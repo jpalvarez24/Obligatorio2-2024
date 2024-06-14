@@ -1,8 +1,7 @@
-
+// Juan Pedro Alvarez y Francisco Latorre
 package interfaz;
 
-import dominio.ArchivoLectura;
-import dominio.Sistema;
+import dominio.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.BufferedOutputStream;
@@ -17,11 +16,10 @@ import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-
 public class MenuPrincipal extends javax.swing.JFrame {
 
     private Sistema sis;
-    
+
     //Serializacion cuando se cierra la ventana
     public MenuPrincipal(Sistema unSistema) {
         sis = unSistema;
@@ -169,14 +167,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         setBounds(0, 0, 671, 423);
     }// </editor-fold>//GEN-END:initComponents
-    
+
     private void btnRegistroObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroObraActionPerformed
         new RegistroObra(sis).setVisible(true);
     }//GEN-LAST:event_btnRegistroObraActionPerformed
 
     private void btnExportacionDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportacionDatosActionPerformed
         ArchivoGrabacion result = new ArchivoGrabacion("Personas.txt");
-        
+
     }//GEN-LAST:event_btnExportacionDatosActionPerformed
 
     private void btnRegistrarCapatazActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarCapatazActionPerformed
@@ -206,36 +204,62 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void btnImportacionDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportacionDatosActionPerformed
         JFileChooser fc = new JFileChooser();
         int seleccion = fc.showOpenDialog(this);
-        
-        if(seleccion == JFileChooser.APPROVE_OPTION){
+
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
             File fichero = fc.getSelectedFile();
-            
+
             ArchivoLectura arch = new ArchivoLectura(fichero.getAbsolutePath());
-            while(arch.hayMasLineas()){
-                String [] lin = arch.linea().split("#");
+            if (arch.hayMasLineas()) {
+
+                String[] lin = arch.linea().split("#");
+
                 String cedulaCap = lin[0];
-                if(!sis.existeCedulaCapataz(cedulaCap)){
-                    JOptionPane.showMessageDialog(this, "Cedula no registrada en el sistema", "Error", JOptionPane.ERROR_MESSAGE);
+                if (!sis.existeCedulaCapataz(cedulaCap)) {
+                    JOptionPane.showMessageDialog(this, "Cedula de capataz no registrada en el sistema", "Error", JOptionPane.ERROR_MESSAGE);
+                    arch.cerrar();
                     return;
                 }
                 String cedulaProp = lin[1];
-                if(!sis.existeCedulaPropietario(cedulaProp)){
-                    JOptionPane.showMessageDialog(this, "Cedula no registrada en el sistema", "Error", JOptionPane.ERROR_MESSAGE);
+                if (!sis.existeCedulaPropietario(cedulaProp)) {
+                    JOptionPane.showMessageDialog(this, "Cedula de propietario no registrada en el sistema", "Error", JOptionPane.ERROR_MESSAGE);
+                    arch.cerrar();
                     return;
                 }
                 String direccion = lin[2];
-                int mes = Integer.valueOf(lin[3]);
-               
-                //que pasa mi gente
-                
+                int mes = Integer.parseInt(lin[3]);
+                int ano = Integer.parseInt(lin[4]);
+                int numPermiso = Integer.parseInt(lin[5]);
+
+                Capataz capataz = sis.getCapatazPorCedula(cedulaCap);
+                Propietario propietario = sis.getPropietarioPorCedula(cedulaProp);
+
+                Obra nuevaObra = new Obra(propietario, capataz, numPermiso, direccion, mes, ano, 0);
+
+                if (arch.hayMasLineas()) {
+                    int cantidadRubros = Integer.parseInt(arch.linea());
+
+                    for (int i = 0; i < cantidadRubros; i++) {
+                        if (arch.hayMasLineas()) {
+                            String[] rubroData = arch.linea().split("#");
+                            String nombreRubro = rubroData[0];
+                            int monto = Integer.parseInt(rubroData[1]);
+
+                            Rubro rubro = new Rubro(nombreRubro, "Descripción del rubro");
+                            CostoRubro costoRubro = new CostoRubro(rubro, monto);
+
+                            nuevaObra.addRubroAObra(costoRubro);
+                        }
+                    }
+                }
+
+                // Añadir la nueva obra al sistema
+                sis.addObra(nuevaObra);
             }
-            
+
+            arch.cerrar();  // Cerrar el archivo al finalizar
         }
     }//GEN-LAST:event_btnImportacionDatosActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem btnEstadoObra;
