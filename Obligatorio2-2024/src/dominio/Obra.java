@@ -70,6 +70,10 @@ public class Obra extends Observable implements Serializable{
     public int getPresupuesto() {
         return presupuesto;
     }
+    
+    public void setPresupuesto(int unPresupuesto){
+        this.presupuesto = unPresupuesto;
+    }
     //Arraylist CostoRubro
     public ArrayList<CostoRubro> getListaRubrosObra(){
         return this.listaRubros;

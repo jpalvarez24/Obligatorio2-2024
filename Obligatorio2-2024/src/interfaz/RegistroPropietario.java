@@ -99,13 +99,13 @@ public class RegistroPropietario extends javax.swing.JFrame {
         String direc = txtFldDireccion.getText();
         String nroContStr = txtFldNroCont.getText();
 
-        // Validación de nombre: debe ser un string no vacío
+        // Validaciones basicas para que el usuario no ingrese cualquier cosa
         if (nombre == null || nombre.trim().isEmpty() || !nombre.matches("[a-zA-Z\\s]+")) {
             JOptionPane.showMessageDialog(this, "El nombre debe ser un string no vacío y solo contener letras.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        // Validación de cédula: debe ser un número de 8 dígitos
+      
         if (cedulaStr == null || cedulaStr.trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "La cédula debe ser un String no vacio.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -116,13 +116,13 @@ public class RegistroPropietario extends javax.swing.JFrame {
             return;
         }
 
-        // Validación de dirección: debe ser un string no vacío
+        
         if (direc == null || direc.trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "La dirección debe ser un string no vacío.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        // Validación de número de contacto: debe ser un número de 9 dígitos
+        
         if (nroContStr == null || nroContStr.trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "El número de contacto debe ser un número de 9 dígitos.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -134,6 +134,7 @@ public class RegistroPropietario extends javax.swing.JFrame {
         txtFldCedul.setText("");
         txtFldDireccion.setText("");
         txtFldNroCont.setText("");
+        JOptionPane.showMessageDialog(this, "Propietario registrado exitosamente.", "Información", JOptionPane.INFORMATION_MESSAGE);
 
     }//GEN-LAST:event_botonRegistrarActionPerformed
 

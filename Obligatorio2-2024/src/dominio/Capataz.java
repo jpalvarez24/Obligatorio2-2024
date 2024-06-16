@@ -60,6 +60,8 @@ public class Capataz implements Serializable{
         return nombre;
     }
     
-    
+    public String toString2(){
+        return nombre + cedula + direccion + anoIngreso;
+    }
     
 }

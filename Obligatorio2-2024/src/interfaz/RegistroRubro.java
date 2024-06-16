@@ -146,7 +146,7 @@ public class RegistroRubro extends javax.swing.JFrame implements Observer {
             JOptionPane.showMessageDialog(this, "Nombre y Descripción no pueden estar vacíos", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-
+        //verifica que no haya nada seleccionado en la lista para crar rubro
         if (jListaRubros.getSelectedValue() == null) {
             r1 = new Rubro(nombre, descp);
             sis.addRubro(r1);

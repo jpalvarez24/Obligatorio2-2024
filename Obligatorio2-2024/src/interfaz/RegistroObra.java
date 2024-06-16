@@ -1,8 +1,4 @@
-
-
 // Juan Pedro Alvarez y Francisco Latorre
-
-
 package interfaz;
 
 import dominio.*;
@@ -76,7 +72,7 @@ public class RegistroObra extends javax.swing.JFrame implements Observer {
         }
         modeloAPantalla();
     }
-    // es el que esta abajo en la 
+
 
     @Override
     public void update(Observable o, Object ob) {
@@ -262,7 +258,7 @@ public class RegistroObra extends javax.swing.JFrame implements Observer {
         rubrosSeleccionados.clear();
         presupuestoTotal = 0;
         actualizarPresupuestoTotal();
-        JOptionPane.showMessageDialog(this, "Obra registrada con exitosamente.", "Información", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Obra registrada exitosamente.", "Información", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnRegistrarObraActionPerformed
 
     private void txtFldNroPermActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldNroPermActionPerformed

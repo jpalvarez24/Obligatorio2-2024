@@ -173,8 +173,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistroObraActionPerformed
 
     private void btnExportacionDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportacionDatosActionPerformed
-        ArchivoGrabacion result = new ArchivoGrabacion("Personas.txt");
-
+          Exportacion newframe = new Exportacion(sis);
+        
+        newframe.setVisible(true);
     }//GEN-LAST:event_btnExportacionDatosActionPerformed
 
     private void btnRegistrarCapatazActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarCapatazActionPerformed
@@ -203,11 +204,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void btnImportacionDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportacionDatosActionPerformed
         JFileChooser fc = new JFileChooser();
+        //Abre explorador de archivos
         int seleccion = fc.showOpenDialog(this);
-
+        
         if (seleccion == JFileChooser.APPROVE_OPTION) {
             File fichero = fc.getSelectedFile();
-
+           
             ArchivoLectura arch = new ArchivoLectura(fichero.getAbsolutePath());
             if (arch.hayMasLineas()) {
 
@@ -229,12 +231,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 int mes = Integer.parseInt(lin[3]);
                 int ano = Integer.parseInt(lin[4]);
                 int numPermiso = Integer.parseInt(lin[5]);
-
+                int unPresupuesto = 0;
                 Capataz capataz = sis.getCapatazPorCedula(cedulaCap);
                 Propietario propietario = sis.getPropietarioPorCedula(cedulaProp);
 
-                Obra nuevaObra = new Obra(propietario, capataz, numPermiso, direccion, mes, ano, 0);
-
+                Obra nuevaObra = new Obra(propietario, capataz, numPermiso, direccion, mes, ano, unPresupuesto);
+                    
                 if (arch.hayMasLineas()) {
                     int cantidadRubros = Integer.parseInt(arch.linea());
 
@@ -243,7 +245,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                             String[] rubroData = arch.linea().split("#");
                             String nombreRubro = rubroData[0];
                             int monto = Integer.parseInt(rubroData[1]);
-
+                            unPresupuesto += monto;
                             Rubro rubro = new Rubro(nombreRubro, "Descripción del rubro");
                             CostoRubro costoRubro = new CostoRubro(rubro, monto);
 
@@ -251,12 +253,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         }
                     }
                 }
-
-                // Añadir la nueva obra al sistema
+                nuevaObra.setPresupuesto(unPresupuesto);
+                //Agrega obra, muy parecido a codigo de registrar obra
                 sis.addObra(nuevaObra);
+                JOptionPane.showMessageDialog(this, "Obra registrada exitosamente.", "Informacion", JOptionPane.INFORMATION_MESSAGE);
             }
 
-            arch.cerrar();  // Cerrar el archivo al finalizar
+            arch.cerrar();
         }
     }//GEN-LAST:event_btnImportacionDatosActionPerformed
 

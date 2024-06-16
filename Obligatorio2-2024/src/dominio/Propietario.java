@@ -61,4 +61,9 @@ public class Propietario implements Serializable{
     }
     
     
+    public String toString2(){
+        return nombre + cedula + direccion + numContacto;
+    }
+    
+    
 }
