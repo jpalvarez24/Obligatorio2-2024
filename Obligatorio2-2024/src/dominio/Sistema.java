@@ -75,6 +75,16 @@ public class Sistema extends Observable implements Serializable {
         }
         return ans;
     }
+    
+    public Rubro getRubroPorNombre(String nombre){
+        Rubro ans = null;
+        for(Rubro rub : listaRubros){
+            if(rub.getNombreRubro().equals(nombre)){
+                ans = rub;
+            }
+        }
+        return ans;
+    }
 
     public boolean existeCedulaCapataz(String cedula) {
         boolean ans = false;

@@ -8,6 +8,7 @@ package dominio;
 import java.io.Serializable;
 
 
+
 public class Propietario implements Serializable{
     private String nombre;
     private String cedula;

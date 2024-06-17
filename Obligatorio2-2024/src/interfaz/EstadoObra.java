@@ -159,6 +159,7 @@ public class EstadoObra extends javax.swing.JFrame implements Observer {
         jLabel24 = new javax.swing.JLabel();
         lblAno = new javax.swing.JLabel();
         lblTotalGastado = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -171,66 +172,76 @@ public class EstadoObra extends javax.swing.JFrame implements Observer {
         jScrollPane1.setViewportView(jListaObras);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(20, 30, 150, 80);
+        jScrollPane1.setBounds(20, 40, 150, 100);
 
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel1.setText("Propietario:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(220, 20, 80, 16);
+        jLabel1.setBounds(220, 10, 70, 50);
         getContentPane().add(lblPropietario);
-        lblPropietario.setBounds(300, 20, 70, 20);
+        lblPropietario.setBounds(290, 20, 70, 30);
 
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel3.setText("Capataz: ");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(520, 20, 60, 16);
+        jLabel3.setBounds(450, 50, 60, 20);
 
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel4.setText("Total presupuestado:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(220, 60, 130, 16);
+        jLabel4.setBounds(220, 70, 130, 40);
 
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel5.setText("Total Gastado:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(450, 60, 90, 16);
+        jLabel5.setBounds(450, 80, 90, 30);
 
+        jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel6.setText("Total Gastado Ya Integrado:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(220, 90, 170, 16);
+        jLabel6.setBounds(220, 110, 150, 40);
 
+        jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel7.setText("Total gastado no integrado:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(450, 90, 160, 16);
+        jLabel7.setBounds(450, 120, 150, 20);
 
+        jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel8.setText("Saldo:");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(680, 90, 50, 16);
+        jLabel8.setBounds(660, 120, 50, 20);
 
         jScrollPane2.setViewportView(jListaPresupuesto);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(10, 160, 180, 140);
+        jScrollPane2.setBounds(10, 190, 180, 140);
 
+        jLabel9.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel9.setText("Presupuesto (Rubros y montos):");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(10, 130, 190, 16);
+        jLabel9.setBounds(10, 160, 190, 14);
 
+        jLabel10.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel10.setText("Lista obras");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(20, 10, 70, 16);
+        jLabel10.setBounds(20, 14, 70, 20);
         getContentPane().add(lblCapataz);
-        lblCapataz.setBounds(580, 20, 70, 20);
+        lblCapataz.setBounds(510, 50, 70, 20);
 
+        jLabel12.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel12.setText("Comienzo obra:");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(220, 40, 100, 16);
+        jLabel12.setBounds(220, 50, 90, 20);
         getContentPane().add(lblMes);
-        lblMes.setBounds(310, 40, 20, 20);
+        lblMes.setBounds(320, 50, 20, 30);
         getContentPane().add(lblPresupuesto);
-        lblPresupuesto.setBounds(350, 60, 70, 20);
+        lblPresupuesto.setBounds(340, 70, 80, 30);
         getContentPane().add(lblTotGastadoIntegrado);
-        lblTotGastadoIntegrado.setBounds(390, 90, 50, 20);
+        lblTotGastadoIntegrado.setBounds(370, 120, 60, 20);
         getContentPane().add(lblTotGastNoIntegrado);
-        lblTotGastNoIntegrado.setBounds(620, 90, 50, 20);
+        lblTotGastNoIntegrado.setBounds(600, 100, 50, 20);
         getContentPane().add(lblSaldo);
-        lblSaldo.setBounds(730, 90, 50, 20);
+        lblSaldo.setBounds(700, 120, 50, 20);
 
         jListaRubrosConGastos.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -240,46 +251,58 @@ public class EstadoObra extends javax.swing.JFrame implements Observer {
         jScrollPane3.setViewportView(jListaRubrosConGastos);
 
         getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(260, 160, 180, 140);
+        jScrollPane3.setBounds(260, 190, 180, 140);
 
+        jLabel18.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel18.setText("Rubros con gastos en la obra:");
         getContentPane().add(jLabel18);
-        jLabel18.setBounds(260, 130, 180, 16);
+        jLabel18.setBounds(260, 160, 180, 14);
 
         jScrollPane4.setViewportView(ListaGastosDelRubros);
 
         getContentPane().add(jScrollPane4);
-        jScrollPane4.setBounds(490, 160, 260, 140);
+        jScrollPane4.setBounds(490, 190, 260, 140);
 
+        jLabel19.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel19.setText("Gastos del rubro seleccionado:");
         getContentPane().add(jLabel19);
-        jLabel19.setBounds(490, 120, 270, 30);
+        jLabel19.setBounds(490, 150, 270, 30);
 
+        jLabel20.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel20.setText("Codigo de colores:");
         getContentPane().add(jLabel20);
-        jLabel20.setBounds(110, 310, 120, 16);
+        jLabel20.setBounds(110, 350, 120, 14);
 
+        jLabel21.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel21.setText("Presupuesto y Reintegrado");
         getContentPane().add(jLabel21);
-        jLabel21.setBounds(250, 310, 160, 16);
+        jLabel21.setBounds(250, 350, 160, 14);
 
+        jLabel22.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel22.setText("Presupuestado y no Reintegrado");
         getContentPane().add(jLabel22);
-        jLabel22.setBounds(250, 330, 200, 16);
+        jLabel22.setBounds(250, 370, 200, 14);
 
+        jLabel23.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel23.setText("No Presupuestado y Reintegrado");
         getContentPane().add(jLabel23);
-        jLabel23.setBounds(450, 310, 190, 16);
+        jLabel23.setBounds(450, 350, 190, 14);
 
+        jLabel24.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel24.setText("No Presupuestado y No Reintegrado");
         getContentPane().add(jLabel24);
-        jLabel24.setBounds(450, 330, 210, 16);
+        jLabel24.setBounds(450, 370, 210, 14);
         getContentPane().add(lblAno);
-        lblAno.setBounds(380, 40, 50, 0);
+        lblAno.setBounds(350, 50, 50, 30);
         getContentPane().add(lblTotalGastado);
-        lblTotalGastado.setBounds(540, 60, 80, 20);
+        lblTotalGastado.setBounds(530, 80, 80, 20);
 
-        setBounds(0, 0, 806, 406);
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel2.setText("/");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(340, 50, 30, 30);
+
+        setBounds(0, 0, 806, 450);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jListaObrasValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListaObrasValueChanged
@@ -387,6 +410,7 @@ public class EstadoObra extends javax.swing.JFrame implements Observer {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
